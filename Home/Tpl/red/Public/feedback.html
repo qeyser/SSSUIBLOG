@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    {$seoinfo}
+    <!--[if lt IE 9]>
+    <script src="../Public/js/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel='stylesheet' id='twentytwelve-ie-css'  href='../Public/css/ie.css?ver=20121010' type='text/css' media='all' />
+    <![endif]-->
+    <link rel="stylesheet" id="twentytwelve-fonts-css" href="../Public/css/css.css" type="text/css" media="all">
+    <link rel="stylesheet" id="twentytwelve-style-css" href="../Public/css/style.css" type="text/css" media="all">
+    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body class="home blog custom-font-enabled single-author">
+    <include file="Public:header" />
+    <div id="main" class="wrapper">
+        <div id="primary" class="site-content">
+            <div id="content" role="main">
+
+		    	<h2 class="listHeader">举报反馈</h2>
+				<p class="font12 colorL tis">欢迎给我们提出意见和建议，您留下的每个字都将被用于改善我们的服务。</p>
+				<form method="POST" id="form1" action="{:U('Home/Public/feedback')}" class="clearfix">
+					<label class="label clearfix">
+						<span class="labelTitle">举报类型：</span>
+						<select name="module">
+							<option value="Star" <eq name="module" value="Star">selected="selected"</eq>>名片</option>
+							<option value="Songs" <eq name="module" value="Songs">selected="selected"</eq>>歌曲</option>
+						</select>
+					</label>
+					<label class="label clearfix">
+						<span class="labelTitle">用户昵称：</span>
+						<input name="nickname" type="text" disabled="disabled" value="{$Think.session.uid|GUI='nickname'}" class="textBox" style="background:#f2f2f2;" />        
+					</label>
+					<label class="label clearfix">
+						<span class="labelTitle">您的邮箱：</span>
+						<input name="email" class="activeBox textBox" type="text" datatype="e" errormsg="请输入正确的电子邮箱地址！" nullmsg="请输入您的登录邮箱" class="input"/>        
+						<div class="msg focus right">
+							<p></p>
+						</div>
+					</label>
+					<label class="label clearfix">
+						<span class="labelTitle">联系电话：</span>
+						<input name="tel" class="textBox" type="text" datatype="*7-16" nullmsg="请输入联系电话！" errormsg="请输入联系电话！" class="input"/>        
+						<div class="msg right focus">
+							<p></p>
+						</div>
+					</label>
+					<label class="label clearfix">
+						<span class="labelTitle">您的意见：</span>
+						<html:editor type="KEMN" NAME="content" id="content"></html:editor> 
+					</label>
+					<input type="hidden" name="action" value="save"/>
+					<input type="hidden" name="url" value="{$url}"/>
+					<input type="hidden" name="pid" value="{$pid}"/>
+					<input type="hidden" name="uid" value="{$Think.session.uid}"/>
+					<input type="hidden" name="nickname" value="{$Think.session.uid|GUI='nickname'}"/>
+					<input type="submit" value="提交意见" class="subBtn" />
+				</form>
+				<script type="text/javascript">
+					$("#form1").Validform({
+						tiptype:function(msg,o,cssctl){
+							if(!o.obj.is("form")){
+								if(o.type==2){
+									$(o.obj).attr('class','w45 rightBox');
+									$(o.obj).parent().find('.msg p').removeClass('red').html(msg);
+								}else if (o.type==3){
+									$(o.obj).attr('class','w45 wrongBox');
+									$(o.obj).parent().find('.msg p').addClass('red').html(msg);
+								}else{
+									var objtip=o.obj.siblings(".Validform_checktip");
+									cssctl(objtip,o.type);
+									objtip.text(msg);
+								}
+							}
+						}
+					});
+				</script>
+                
+            </div><!-- #content -->
+        </div><!-- #primary -->
+        <include file="Public:sider" />
+    </div>
+<include file="Public:footer" />

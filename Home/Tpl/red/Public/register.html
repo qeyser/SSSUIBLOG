@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    {$seoinfo}
+    <!--[if lt IE 9]>
+    <script src="../Public/js/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel='stylesheet' id='twentytwelve-ie-css'  href='../Public/css/ie.css?ver=20121010' type='text/css' media='all' />
+    <![endif]-->
+    <link rel="stylesheet" id="twentytwelve-fonts-css" href="../Public/css/css.css" type="text/css" media="all">
+    <link rel="stylesheet" id="twentytwelve-style-css" href="../Public/css/style.css" type="text/css" media="all">
+    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body class="home blog custom-font-enabled single-author">
+    <include file="Public:header" />
+    <div id="main" class="wrapper">
+        <div id="primary" class="site-content">
+            <div id="content" role="main">
+
+				<form class="right overflow" action="{:U('Home/Public/doregister')}" method="POST" id="register">
+					<label>
+				    	<span class="labelTitle">电子邮箱：</span>
+				    	<input name="email" class="w45 activeBox" type="text" datatype="e" errormsg="请输入正确的电子邮箱地址！" ajaxurl="{:U('Home/Public/checkemail')}" nullmsg="请输入您的登录邮箱" />        
+				    	<div class="msg focus right">
+				    		<div>请输入正确的电子邮箱</div>
+				    	</div>
+				    </label>
+				    <label>
+				    	<span class="labelTitle">用户昵称：</span>
+				    	<input name="nickname" class="w45" type="text" datatype="*2-16" nullmsg="请设置昵称！" errormsg="昵称范围在2~16位之间！"/>        
+				    	<div class="msg right focus">
+				    		<div>请输入您的昵称,如小三</div>
+				    	</div>
+				    </label>
+				    <label>
+				    	<span class="labelTitle">用户密码：</span>
+				    	<input name="password" class="w45" type="password" datatype="*6-16" nullmsg="请输入密码！" errormsg="密码范围在6~16位之间！" />        
+				    	<div class="msg right focus">
+				    		<div>请输入密码！</div>
+				    	</div>
+				    </label>
+				    <label>
+				    	<span class="labelTitle">确认密码：</span>
+				    	<input name="repassword" class="w45" type="password" tip="test" datatype="*" recheck="password" nullmsg="请再输入一次密码！" errormsg="您两次输入的账号密码不一致！" />        
+				    	<div class="msg right focus">
+				    		<div>请再次输入密码！</div>
+				    	</div>
+				    </label>
+				    <label>
+				    	<span class="labelTitle">验证码：</span>
+				    	<input name="vcode" class="w45" type="text" datatype="*4-4" nullmsg="请输入右边的图片上的数字！" errormsg="验证码输入不正确！" ajaxurl="{:U('Home/Public/checkregisterverifycode')}" style="width:22%;margin-right:1em;"/><img src="{:U('Home/Public/registerverify')}" id="yzm" style="cursor:pointer;" class="yzm" onclick="this.src=this.src+'?'+Math.random()" cursor="pointer" alt="请输入图片中的字符，看不清请点击图片">
+				    	<div class="msg right focus">
+				    		<div>请输入验证码</div>
+				    	</div>
+				    </label>
+				    <input type="submit" value="确定注册" class="subBtn" />
+				</form>
+
+				<script type="text/javascript">
+					$(function(){
+						$("#register").Validform({
+							tiptype:function(msg,o,cssctl){
+								//msg：提示信息;
+								//o:{obj:*,type:*,curform:*}, obj指向的是当前验证的表单元素（或表单对象），type指示提示的状态，值为1、2、3、4， 1：正在检测/提交数据，2：通过验证，3：验证失败，4：提示ignore状态, curform为当前form对象;
+								//cssctl:内置的提示信息样式控制函数，该函数需传入两个参数：显示提示信息的对象 和 当前提示的状态（既形参o中的type）;
+								if(!o.obj.is("form")){
+									//验证表单元素时o.obj为该表单元素，全部验证通过提交表单时o.obj为该表单对象;
+									if(o.type==2){
+										$(o.obj).attr('class','w45 rightBox');
+										$(o.obj).parent().find('.msg div').removeClass('red').html(msg);
+									}else if (o.type==3){
+										$(o.obj).attr('class','w45 wrongBox');
+										$(o.obj).parent().find('.msg div').addClass('red').html(msg);
+									}else{
+										var objtip=o.obj.siblings(".Validform_checktip");
+										cssctl(objtip,o.type);
+										objtip.text(msg);
+									}
+								}
+							}
+						});
+					});
+				</script>
+
+            </div><!-- #content -->
+        </div><!-- #primary -->
+        <include file="Public:sider" />
+    </div>
+<include file="Public:footer" />

@@ -1,0 +1,41 @@
+<include file="Public:header" />
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span>修改资料</span></div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/change/" id="form1">
+			<TABLE class="content_list" cellpadding="0" cellspacing="0" >
+				<TR>
+					<TD width="15%">昵称：</TD>
+					<TD><INPUT TYPE="text" class="medium bLeftRequire"  NAME="nickname" value="{$vo.nickname}" dataType="*1-16" nullmsg="请输入昵称！" errormsg="密码至少1个字符,最多16个字符！" ></TD>
+					<TD></TD>
+				</TR>
+				<TR>
+					<TD>Email：</TD>
+					<TD><INPUT TYPE="text" class="large"  NAME="email" value="{$vo.email}" dataType="e" nullmsg="" errormsg="">
+					</TD>
+					<TD></TD>
+				</TR>
+				<TR>
+					<TD>登录网卡：</TD>
+					<TD><TEXTAREA class="large"  NAME="mac" ROWS="5" COLS="57">{$vo.mac}</TEXTAREA></TD>
+					<TD></TD>
+				</TR>
+				<TR>
+					<TD>备  注：</TD>
+					<TD><TEXTAREA class="large"  NAME="remark" ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+					<TD></TD>
+				</TR>
+				<TR>
+					<TD colspan="3">
+						<INPUT TYPE="hidden" name="id" value="{$vo.id}">
+						<input type="submit" class="submit small" value="确 认"/>
+						<input type="button" onclick="history.back()" class="submit small" value="取 消"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3,ajaxPost:true,postonce:false});
+		})
+		</script>
+<include file="Public:footer" />

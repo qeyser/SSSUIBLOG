@@ -1,0 +1,21 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<style type="text/css">
+.updatelog{margin-top: 10px;margin-bottom: 10px;padding: 10px;background: #eee;line-height: 25px;}
+</style>
+<div class="inner">
+	<h1>系统升级</h1> 
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD="POST" class="form" name="form1" action="__URL__/updatefromserver">
+			<div class="updatelog">更新日志:<br>
+				<volist name="err" id="vo">
+					<eq name="vo" value="d" >删除<else />更新</eq>{$key} 失败<br>
+				</volist>
+			</div>
+			<br>
+			<p><html:imageBtn style="imgbtndiv"  type="submit" name="sort" value="重试" click="if (confirm('更新前请先备份源文件,避免诸如断网,文件锁定等原因造成更新失败,以至于无法打开博客\\n\\n已经备份 --&gt; [确定]\\n还未备份 --&gt; [取消]')){return true;}else{return false;}" /></p>
+		</FORM>
+	</div>
+</div>
+<include file="Public:footer" />

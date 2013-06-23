@@ -1,0 +1,257 @@
+<include file="Public:header" />
+		<div class="inner">
+			<h1>Dashboard</h1>
+			
+			<!-- Begin shortcut menu -->
+			<ul id="shortcut">
+    			<li>
+    			  <a original-title="Click me to open modal window" href="http://www.gallyapp.com/tf_themes/weadmin/modal_window.html" id="shortcut_home">
+				    <img src="../Public/Images/home.gif" alt="home"><br>
+				    <strong>Home</strong>
+				  </a>
+				</li>
+    			<li>
+    			  <a original-title="Click me to open modal window" href="http://www.gallyapp.com/tf_themes/weadmin/modal_window.html">
+				    <img src="../Public/Images/calendar.gif" alt="calendar"><br>
+				    <strong>Calendar</strong>
+				  </a>
+				</li>
+    			<li>
+    			  <a original-title="Click me to open modal window" href="http://www.gallyapp.com/tf_themes/weadmin/modal_window.html">
+				    <img src="../Public/Images/stats.gif" alt="stats"><br>
+				    <strong>Stats</strong>
+				  </a>
+				</li>
+				<li>
+    			  <a original-title="Click me to open modal window" href="http://www.gallyapp.com/tf_themes/weadmin/modal_window.html">
+				    <img src="../Public/Images/setting.gif" alt="setting"><br>
+				    <strong>Setting</strong>
+				  </a>
+				</li>
+				<li>
+    			  <a original-title="Click me to open modal window" href="http://www.gallyapp.com/tf_themes/weadmin/modal_window.html" id="shortcut_contacts">
+				    <img src="../Public/Images/contacts.gif" alt="contacts"><br>
+				    <strong>Contacts</strong>
+				  </a>
+				</li>
+				<li>
+    			  <a original-title="Click me to open modal window" href="http://www.gallyapp.com/tf_themes/weadmin/modal_window.html" id="shortcut_posts">
+				    <img src="../Public/Images/posts.gif" alt="posts"><br>
+				    <strong>Posts</strong>
+				  </a>
+				</li>
+  			</ul>
+			<!-- End shortcut menu -->
+			<br class="clear">
+			<!-- Begin graph window -->
+			<div class="onecolumn">
+				<div class="header">
+					<span>Charts</span>
+					<div class="switch" style="width:200px">
+						<table cellpinserting="0" cellspacing="0" width="200px">
+						<tbody>
+							<tr>
+								<td>
+									<input id="chart_bar" name="chart_bar" class="left_switch active" value="Bar" style="width:50px" type="button">
+								</td>
+								<td>
+									<input id="chart_area" name="chart_area" class="middle_switch" value="Area" style="width:50px" type="button">
+								</td>
+								<td>
+									<input id="chart_pie" name="chart_pie" class="middle_switch" value="Pie" style="width:50px" type="button">
+								</td>
+								<td>
+									<input id="chart_line" name="chart_line" class="right_switch" value="Line" style="width:50px" type="button">
+								</td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+				<br class="clear">
+				<div class="content">
+					<div id="chart_wrapper" class="chart_wrapper"><div style="height: 240px; width: 650px;" class="visualize visualize-bar" role="img" aria-label="Chart representing data from the table: 2009/2010 Sales by industry (Million)"><ul style="width: 650px; height: 240px;" class="visualize-labels-x"><li style="left: 0px; width: 81.25px;"><span style="border: medium none;" class="line"></span><span class="label">Accounting</span></li><li style="left: 81.25px; width: 81.25px;"><span class="line"></span><span class="label">Banking</span></li><li style="left: 162.5px; width: 81.25px;"><span class="line"></span><span class="label">Beauty Care</span></li><li style="left: 243.75px; width: 81.25px;"><span class="line"></span><span class="label">Insurance</span></li><li style="left: 325px; width: 81.25px;"><span class="line"></span><span class="label">Internet</span></li><li style="left: 406.25px; width: 81.25px;"><span class="line"></span><span class="label">Media</span></li><li style="left: 487.5px; width: 81.25px;"><span class="line"></span><span class="label">Telecomm</span></li><li style="left: 568.75px; width: 81.25px;"><span class="line"></span><span class="label">Transportation</span></li></ul><ul style="width: 650px; height: 240px;" class="visualize-labels-y"><li style="bottom: 240px;"><span style="border: medium none;" class="line"></span><span class="label" style="margin-top: 0px;">16</span></li><li style="bottom: 210px;"><span class="line"></span><span class="label" style="margin-top: -7px;">14</span></li><li style="bottom: 180px;"><span class="line"></span><span class="label" style="margin-top: -7px;">12</span></li><li style="bottom: 150px;"><span class="line"></span><span class="label" style="margin-top: -7px;">10</span></li><li style="bottom: 120px;"><span class="line"></span><span class="label" style="margin-top: -7px;">8</span></li><li style="bottom: 90px;"><span class="line"></span><span class="label" style="margin-top: -7px;">6</span></li><li style="bottom: 60px;"><span class="line"></span><span class="label" style="margin-top: -7px;">4</span></li><li style="bottom: 30px;"><span class="line"></span><span class="label" style="margin-top: -7px;">2</span></li><li style="bottom: 0px;"><span style="border: medium none;" class="line"></span><span class="label" style="margin-top: -14px;">0</span></li></ul><canvas width="650" height="240"></canvas><div class="visualize-info"><div class="visualize-title">2009/2010 Sales by industry (Million)</div><ul class="visualize-key"><li><span class="visualize-key-color" style="background: #7EC421"></span><span class="visualize-key-label">2009</span></li><li><span class="visualize-key-color" style="background: #9FBAD4"></span><span class="visualize-key-label">2010</span></li></ul></div></div></div>
+					<br class="clear">
+					<div class="alert_info">
+						<p>
+							<img src="../Public/Images/icon_info.gif" alt="success" class="mid_align">
+							Click on each cell to change its value and graph.
+						</p>
+					</div>
+					<br class="clear">
+					
+				</div>
+			</div>
+			<!-- End graph window -->
+			<!-- Begin one column window -->
+			<div class="onecolumn">
+				<div class="header">
+					<span>List data</span>
+				</div>
+				<br class="clear">
+				<div class="content">
+					<form id="form_data" name="form_data" action="" method="post">
+						<table class="data" cellpinserting="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th style="width:10px">
+										<input id="check_all" name="check_all" type="checkbox">
+									</th>
+									<th style="width:30%">Column 1</th>
+									<th style="width:20%">Column 2</th>
+									<th style="width:30%">Column 3</th>
+									<th style="width:15%">Column 4</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input type="checkbox">
+									</td>
+									<td>Maecenas lacinia orci at neque</td>
+									<td><a href="">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>
+										<a href=""><img src="../Public/Images/icon_edit.gif" alt="edit" class="help" title="Edit"></a>
+										<a href=""><img src="../Public/Images/icon_delete.gif" alt="delete" class="help" title="Delete"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox">
+									</td>
+									<td>Maecenas lacinia orci at neque</td>
+									<td><a href="">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>
+										<a href=""><img src="../Public/Images/icon_edit.gif" alt="edit" class="help" title="Edit"></a>
+										<a href=""><img src="../Public/Images/icon_delete.gif" alt="delete" class="help" title="Delete"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox">
+									</td>
+									<td>Maecenas lacinia orci at neque</td>
+									<td><a href="">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>
+										<a href=""><img src="../Public/Images/icon_edit.gif" alt="edit" class="help" title="Edit"></a>
+										<a href=""><img src="../Public/Images/icon_delete.gif" alt="delete" class="help" title="Delete"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox">
+									</td>
+									<td>Maecenas lacinia orci at neque</td>
+									<td><a href="">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>
+										<a href=""><img src="../Public/Images/icon_edit.gif" alt="edit" class="help" title="Edit"></a>
+										<a href=""><img src="../Public/Images/icon_delete.gif" alt="delete" class="help" title="Delete"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="chart_wrapper" class="chart_wrapper"></div>
+					<!-- End bar chart table-->
+					</form>
+					
+					<!-- Begin pagination -->
+						<div class="pagination">
+							<a href="#">«</a>
+							<a href="#" class="active">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							<a href="#">6</a>
+							<a href="#">»</a>
+						</div>
+					<!-- End pagination -->
+				</div>
+			</div>
+			<!-- End one column window -->
+			<!-- Begin two column window -->
+			<!-- Begin left column window -->
+			<div class="twocolumn">
+				<div class="column_left">
+					<div class="header">
+						<span>Form elements</span>
+					</div>
+					<br class="clear">
+					<div class="content">
+						<div class="alert_warning" style="margin-top:0">
+							<p>
+								<img src="../Public/Images/icon_warning.gif" alt="success" class="mid_align">
+								Warning Notification.
+							</p>
+						</div>
+						<div class="alert_info">
+							<p>
+								<img src="../Public/Images/icon_info.gif" alt="success" class="mid_align">
+								Information Notification.
+							</p>
+						</div>
+						<div class="alert_success">
+							<p>
+								<img src="../Public/Images/icon_accept.gif" alt="success" class="mid_align">
+								Success Notification.
+							</p>
+						</div>
+						<div class="alert_error">
+							<p>
+								<img src="../Public/Images/icon_error.gif" alt="delete" class="mid_align">
+								Error Notification.
+							</p>
+						</div>
+						<br class="clear">
+						
+						<h2>Headline</h2><br>
+						<p>
+							<label>Text input label:</label><br>
+							<input id="text_input1" style="width:300px" type="text">
+						</p>
+						<br>
+						<p>
+							<label>Date input label:</label><br>
+							<input class="hasDatepicker" id="datepicker" name="datepicker" style="width:300px" type="text">
+						</p>
+						<br>
+						<p>
+							<label>Textarea label:</label><br>
+							<textarea rows="5" cols="35"></textarea>
+						</p>
+						<br>
+						<p>
+							<select>
+            	      			<optgroup label="Apple">
+            	      				<option selected="selected">iPad</option>
+            	      				<option>iPhone</option>
+            	      				<option>Macbook</option>
+            	      			</optgroup>
+            	      			<optgroup label="Microsoft">
+            	      				<option>Window 7</option>
+            	      				<option>Zune</option>
+            	      				<option>XBox 360</option>
+            	      			</optgroup>
+            	    		</select>
+						</p>
+						<br>
+						<p>
+							<input class="checkbox" checked="checked" id="cbdemo1" type="checkbox"> <label for="cbdemo1">Checkbox label</label>
+							<input checked="checked" class="radio" type="radio"> <label>Radio button label</label> 
+						</p>
+						<br><br>
+						<p>
+							<input id="btn_modal" value="Open modal window" type="button">
+						</p>
+					</div>
+				</div>	
+				<!-- End left column window -->
+			</div>
+			<!-- End two column window -->
+			<br class="clear">
+		</div>
+<include file="Public:header" />

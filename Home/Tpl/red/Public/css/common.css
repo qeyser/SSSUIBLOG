@@ -1,0 +1,21 @@
+/* 用于积分奖励提示等弹出层提示 */
+.popupcredit {
+	position:absolute;left:50%;top:50%;margin-left:-125px;width:250px;z-index: 123456789;}
+.pc_l, .pc_c, .pc_inner, .pc_r { width: 29px; height: 56px; line-height: 56px; background: url(/Public/minimsg/popupcredit_bg.gif) no-repeat 0 0; }
+.pc_c { width: 200px; background-position: 0 -56px; background-repeat: repeat-x; }
+.pc_inner { white-space: nowrap; text-align: center; width: auto; background-position: 50% -112px; }
+.pc_inner i { margin-right: 10px; font-size: 12px; font-style: normal; color: {LIGHTLINK}; font-weight: 400; }
+.pc_inner span { margin-right: 15px; color: #FFEA97; font-size: 14px; font-weight: 700; }
+* html .pc_inner span { display: inline-block; }
+.pc_inner span a { color: #FFEA97; text-decoration: underline; }
+.pc_inner span em { color: {LIGHTLINK}; font-size: 18px; font-weight: 400; }
+.pc_inner span u { font-size: 10px; text-decoration: none; }				
+.pc_inner span em.desc { color: #930; }
+.pc_btn img { opacity: 0.5; }
+.pc_btn:hover img { opacity: 1; }
+.pc_r { background-position: -30px 0;}
+.minilogindiv{width:300px;height:110px;padding-left:20px;}
+.minilogindiv p{margin-top:10px;font-size:14px;line-height:24px;}
+.minilogindiv p span{font-size:14px;line-height:24px;}
+.minilogininput{width:200px;height:25px;line-height:24px;font-size:14px;border:solid 1px #333300;}
+.minilogindiv p a{padding-left:7px;padding-top:3px;}

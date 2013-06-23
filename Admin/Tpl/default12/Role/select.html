@@ -1,0 +1,57 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function ok(){
+	var result = new Array();
+	var obj	   = form1.group.options;
+	var j=0;
+	for(var i=0;i<obj.length;i++){
+		if (obj[i].selected==true){
+			result[j] = new Array();
+			result[j][0]	=	obj[i].text;
+			result[j][1]	=	obj[i].value;
+			j++;
+		}
+	}
+	returnValue=result;
+	window.close(); 
+}
+//-->
+</SCRIPT>
+<style>
+.multiSelect{width:300px;}
+</style>
+<div class="inner">
+	<h1>角色组列表</h1> 
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD="POST" style="" name = "form1" ACTION="">
+			<TABLE class="order list" cellpinserting=0  cellspacing=0 style="width:320px;margin-left:0" />
+				<TR>
+					<Th colspan=2 align="center">
+						<input name="name" type="text" style="width:165px">
+						<html:imageBtn style="imgbtndiv"  type="button" name="search" value="查询" click="form1.submit()"/>
+					</Th>
+				</TR>
+				<TR >
+					<TD width="75%">
+						<SELECT class="multiSelect" ondblclick="ok()" name="group" size="15">
+						<option value="0">无上级组</option>
+						<voList name="list" id="group" >
+							<option value="{$group.id}">{$group.name}</option>
+						</voList>
+						</SELECT>
+					</TD>
+				</TR>
+				<TR>
+					<TD colspan=2 align="center">
+						<input type="submit" value="确 定" click="ok()" /> 
+						<input name="button" type="button" value="取 消" click="window.close()"  />
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+	</div>
+</div>
+<include file="Public:footer" />

@@ -1,0 +1,21 @@
+<include file="Public:header" />
+		<div class="bread_nav">
+			<span>配置管理</span>
+		</div>
+		<div class="editing_area clearfix">
+				<form id="SearchA" name="SearchForm" class="adv" method="POST">
+					<html:imageBtn name="add_btn" value="新增" click="add();" style="add btn" />
+					<html:imageBtn name="delete_btn" value="删除" click="del();" style="delete btn" />
+					<html:imageBtn name="cache_btn" value="缓存" click="cache();" style="cache btn" />
+					<div class="clearfix">
+						<span class="m">
+							配置名称查询:<input type="text" class="medium" name="title" />
+						</span>
+						<html:imageBtn value="查询" name="search_btn" type="submit" style="search btn" />
+					</div>
+				</form>
+		</div>
+		<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|10%,title:配置名称,name:变量:edit,value|showAbstruct:当前值" actionlist="edit:编辑:id,del:删除:id" />
+		<div class="page">{$page}</div>
+<include file="Public:listjs" />
+<include file="Public:footer" />

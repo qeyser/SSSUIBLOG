@@ -1,0 +1,93 @@
+<include file="Public:header" />
+<?php
+if (ACTION_NAME!='add'){
+	$level=$vo['level'];
+}
+?>
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav">
+			<span>
+				<eq name="ACTION_NAME" value='add'>新增<else />编辑</eq>
+				<eq name="level" value="1">应用</eq>
+				<eq name="level" value="2">模块</eq>
+				<eq name="level" value="3">操作</eq>
+			</span>
+			[ <A HREF="__URL__">返回列表</A> ]
+		</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR>
+					<TD class="tRight" >
+						<eq name="level"  value="1">应用</eq>
+						<eq name="level" value="2">模块</eq>
+						<eq name="level"  value="3">操作</eq>名：
+					</TD>
+					<TD class="tLeft" >
+						<INPUT TYPE="text" class="medium bLeftRequire" dataType='*' nullmsg="<eq name="level" value="1">应用</eq><eq name="level" value="2">模块</eq><eq name="level" value="3">操作</eq>名称不能为空,且不能含有空格"  NAME="name" value="{$vo.name}">
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >显示名：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire" dataType='*' nullmsg="显示名称必须" NAME="title" value="{$vo.title}"></TD>
+				</TR>
+				<eq name="level" value="2">
+				<TR>
+					<TD class="tRight" >组件名：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="module" value="{$vo.module}">
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >分 组：</TD>
+					<TD class="tLeft" >
+						<SELECT class="medium bLeft" NAME="group_id">
+							<option value="0">首页</option>
+							<volist name="list" id="group">
+							<option value="{$group.id}" <eq name="group.id" value="$vo['group_id']">selected</eq>>{$group.title}</option>
+							</volist>
+						</SELECT>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight">是否显示：</TD>
+					<TD class="tLeft">
+						<SELECT class="small bLeft"  NAME="is_show">
+							<option <eq name="vo.is_show" value="1" >selected</eq> value="1">显示</option>
+							<option <eq name="vo.is_show" value="0" >selected</eq> value="0">不显示</option>
+						</SELECT>
+					</TD>
+				</TR>
+				</eq>
+				<TR>
+					<TD class="tRight">状态：</TD>
+					<TD class="tLeft">
+						<SELECT class="small bLeft"  NAME="status">
+							<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+							<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+						</SELECT>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight tTop">描 述：</TD>
+					<TD class="tLeft"><TEXTAREA class="large bLeft" NAME="remark"  ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+				</TR>
+				<TR>
+					<TD ></TD>
+					<TD class="tLeft">
+						<eq name="ACTION_NAME" value='add'>
+						<INPUT TYPE="hidden" name="level" value="{$level}">
+						<INPUT TYPE="hidden" name="pid" value="{$pid}">
+						<else />
+						<INPUT TYPE="hidden" name="id" value="{$vo.id}" >
+						<INPUT TYPE="hidden" name="pid" value="{$vo.pid}">
+						</eq>
+						<INPUT TYPE="submit" value="保存" class="submit">
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

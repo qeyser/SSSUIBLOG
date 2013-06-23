@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	<!-- Website Title --> 
+	<title></title>
+	<link href="../Public/css/screen.css" rel="stylesheet" type="text/css" media="all">
+	<!--[if IE]>
+		<link href="../Public/css/ie.css" rel="stylesheet" type="text/css" media="all">
+		<script type="text/javascript" src="../Public/js/excanvas.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		var URL = '__URL__';
+		var APP  =   '__APP__';
+		var PUBLIC = '__PUBLIC__';
+		var TPL_PATH='../Public';
+	</script>
+	<!-- Jquery and plugins -->
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Js/ThinkAjax.js"></script>
+	<script type="text/javascript" src="../Public/js/common.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(':checkbox[name="key"]').click(function(){return false;});
+		$('.chaxun').hide();
+		$('.list tr').find(':checkbox[name="key"]').attr("checked",false);		
+		$('.list tr').click(function(){ 
+			if ($(this).find(':checkbox[name="key"]').attr('checked')==undefined){
+				$(this).css('backgroundColor','#CF9');
+				$(this).find(':checkbox[name="key"]').attr("checked",true);
+			}else{
+				$(this).css('backgroundColor','#FFF');
+				$(this).find(':checkbox[name="key"]').attr("checked",false);
+			}
+		});
+		$('.list tr').hover(
+			function(){if($(this).find(':checkbox[name="key"]').attr('checked')==undefined){ $(this).css('backgroundColor','#CFC');}},
+			function(){if($(this).find(':checkbox[name="key"]').attr('checked')==undefined){ $(this).css('backgroundColor','#FFF');}}
+		);
+	});
+	</script>
+</head>
+<body style="background: #F7F7F7">
+<div class="content_wrapper">	
+	<div id="content">

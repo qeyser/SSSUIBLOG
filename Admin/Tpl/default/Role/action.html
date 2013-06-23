@@ -1,0 +1,57 @@
+<include file="Public:header" />
+<style type="text/css">
+.editing_list{border: 1px solid;width:265px}
+.multiSelect{width: 100%;height: 100%;}
+</style>
+		<script type="text/javascript" src="../Public/js/Validform.js"></script>
+		<script type="text/javascript" src="../Public/js/JTree.js"></script>
+		<script type="text/javascript" src="../Public/js/MultiSelect.js"></script>
+		<div class="bread_nav"><span>操作授权</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="form1" id="form1" ACTION="__URL__/setAction/">
+            <TABLE class="select list" style="width:310px;margin:0;" >
+                <TR>
+					<Th class="tCenter">
+						<A HREF="__URL__/app/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">应用授权</A> | 
+						<A HREF="__URL__/module/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">模块授权</A> | 
+						操作授权 | 
+						<a href="__URL__/area/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">局部授权</a>
+                    </Th>
+				</TR>
+                <TR>
+					<Td>当前分组：<html:select name="groupId" style="medium" change="location.href = '__ACTION__/groupId/'+this.options[this.selectedIndex].value;" first="选择组" options="groupList" selected="selectGroupId" />
+					</Td>
+				</TR>
+                <TR>
+					<Td>
+                        当前应用：<html:select name="appId"  style="medium" change="location.href = '__ACTION__/groupId/{$Think.get.groupId}/appId/'+this.options[this.selectedIndex].value;" first="选择应用" options="appList" selected="selectAppId" />
+					</Td>
+				</TR>
+                <TR>
+					<Td>
+						当前模块：<html:select name="moduleId"  style="medium" change="location.href = '__ACTION__/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/'+this.options[this.selectedIndex].value;" first="选择模块" options="moduleList" selected="selectModuleId" />
+					</Td>
+				</TR>
+				<TR>
+					<TD >
+						<html:select id="groupActionId" name="groupActionId[]" options="actionList" selected="groupActionList"  multiple="true" style="multiSelect" size="15" />
+					</td>
+                </tr>
+                <tr>
+                    <td  class="row tCenter" >
+                        <input type="button" click="allSelect()" value="全 选" />&nbsp;
+                        <input type="button" click="InverSelect()" value="反 选" />&nbsp;
+                        <input type="button" click="allUnSelect()" value="全 否" />&nbsp;
+                        <input type="submit" value="保 存" />&nbsp;
+                        <!-- <input TYPE="hidden" NAME="groupId" VALUE="{$Think.get.id}" >&nbsp; -->
+                        <input TYPE="hidden" NAME="module" value="Node">
+                        <input TYPE="hidden" name="ajax" VALUE="1">
+                    </td>
+                </tr>
+            </TABLE>
+		</form>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3,postonce:true,ajaxPost:true});
+		})
+		</script>
+<include file="Public:footer" />

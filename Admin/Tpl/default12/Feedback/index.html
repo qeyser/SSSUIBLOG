@@ -1,0 +1,21 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="inner">
+	<h1>反馈列表</h1> 
+	<form action="__URL__" METHOD="POST" name="search" >
+		<p>
+			<html:imageBtn style="imgbtndiv"  type="button" name="delete" value="删除" click="del()"  />
+			<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="排序" click="paixu()"  />
+			<span class="key">反馈人:<input type="text" name="nickname" value="" title="查询" /></span>
+			<html:imageBtn type="submit" name="search" value="查询" style="imgbtndiv" />
+			<!--<html:imageBtn name="adv" value="高级" id="showText" click="showHideSearch()" style="imgbtndiv" />-->
+		</p>
+		<div class="chaxun" id="searchM"></div>
+	</form>
+	<br class="clear">
+	<div class="content">
+		<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|5%,nickname:反馈人,email:邮箱,tel:电话,content:内容,module:模块,create_time|toDate='Y-m-d H#i':时间"  actionlist="edit:查看:id,del:删除:id"/> 
+		<div class="page">{$page}</div>
+	</div>
+</div>
+<include file="Public:footer" />

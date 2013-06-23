@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	<title></title>
+	<link href="../Public/css/screen.css" rel="stylesheet" type="text/css" media="all">
+	<!--[if IE]>
+		<link href="../Public/css/ie.css" rel="stylesheet" type="text/css" media="all">
+		<script type="text/javascript" src="../Public/js/excanvas.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+</head>
+<body>
+<div class="content_wrapper">
+	<a href="javascript:;" id="show_menu">»</a>
+	<div id="left_menu">
+		<a href="javascript:;" id="hide_menu">«</a>
+		<ul class="ui-accordion ui-widget ui-helper-reset" id="main_menu">
+			<li class="ui-accordion-li-fix">
+				<a class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" href="?s=index/main" target="main">
+					<span class="ui-icon ui-icon-triangle-1-e"></span>
+					<img src="../Public/images/icon.home.gif" alt="Home">主页
+				</a>
+			</li>
+			<volist name="menu" id="item" key="j">
+	        <li class="ui-accordion-li-fix"> 
+	        	<a  class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top level1" href="javascript:void(0);">
+					<span class="ui-icon ui-icon-triangle-1-s"></span>
+					<img src="../Public/images/{$icoarr[$j]}" alt="Pages">
+	        		{$item['title']}
+	        	</a> 
+	            <ul  style="display: block;" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active level2">
+	            <volist name="item['_child']" id="childitem">
+	                <?php 
+	                    $arr=array('public','index');
+	                    if (!in_array(strtolower($childitem['name']),$arr) && $childitem['access']==1){ ?>
+	                        <li><a href="?s={$childitem.name}" id="{$key}" target="main">{$childitem.title}</a></li>
+	                <?php }?>
+	            </volist>
+	            </ul>
+	        </li>
+	        </volist>
+		</ul>	
+	</div>
+</div>
+<script type="text/javascript">
+<!--
+	$(function(){
+		$('.level2').hide();
+		$('.level1').click(function(){
+			if ($(this).parent().find(".level2").css('display')!='none'){
+				$(this).parent().find(".level2").slideUp();
+			}else{
+				$('.level2').slideUp();
+				$(this).parent().find(".level2").slideDown();
+			}
+		});
+	});
+//-->
+</script>
+</body>
+</html>

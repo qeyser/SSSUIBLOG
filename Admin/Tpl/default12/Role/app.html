@@ -1,0 +1,53 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<style>
+.multiSelect{width:290px;}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function saveAccess(){
+	ThinkAjax.sendForm('appform','__URL__/setApp/');
+}
+//-->
+</SCRIPT>
+<import  type="js" file="Js.Util.JTree" />
+<import  file="Js.Util.MultiSelect" /> 
+<div class="inner">
+	<h1>应用授权[ <a href="__URL__">返 回</a> ]</h1> 
+    <div id="result" class="result none"></div>
+	<br class="clear">
+	<div class="content">
+	<div id="result" class="result none"></div>
+		<FORM METHOD=POST name="form1" id="appform" ACTION="" class="form_data">
+            <TABLE class="select list" style="width:310px;margin:0;" align="center" id="select">
+                <TR>
+					<Th class="tCenter">
+						应用授权 | 
+						<A HREF="__URL__/module/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">模块授权</A> | 
+						<A HREF="__URL__/action/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">操作授权</A> | 
+						<a href="__URL__/area/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">局部授权</a>
+                    </Th>
+				</TR>
+                <TR><Td class="tLeft">当前分组：<html:select name="groupId" style="medium" change="location.href = '__ACTION__/groupId/'+this.options[this.selectedIndex].value;" first="选择组" options="groupList" selected="selectGroupId" />
+                </Td></TR>
+                <TR><TD >
+                <html:select id="groupAppId" name="groupAppId[]" options="appList" selected="groupAppList"  multiple="true" style="multiSelect" size="15" />
+                </td>
+                </tr>
+                <tr>
+                    <td  class="row tCenter" >
+                        <html:imageBtn style="imgbtndiv"  type="button" click="allSelect()" value="全 选" />&nbsp;
+                        <html:imageBtn style="imgbtndiv"  type="button" click="InverSelect()" value="反 选" />&nbsp;
+                        <html:imageBtn style="imgbtndiv"  type="button" click="allUnSelect()" value="全 否" />&nbsp;
+                        <html:imageBtn style="imgbtndiv"  type="button" click="saveAccess()" value="保 存" />&nbsp;
+                        <!-- <input TYPE="hidden" NAME="groupId" VALUE="{$Think.get.id}" > -->
+                        <input TYPE="hidden" NAME="module" value="Node">
+                        <input TYPE="hidden" name="ajax" VALUE="1">
+                    </td>
+                </tr>
+            </TABLE>
+        </FORM>
+	</div>
+</div>
+
+<include file="Public:footer" />

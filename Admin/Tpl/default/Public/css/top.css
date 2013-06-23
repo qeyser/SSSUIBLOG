@@ -1,0 +1,221 @@
+@charset "UTF-8";
+@import url(../css/public.css);
+.top {
+	width:100%;
+	height: 42px;
+	line-height: 42px;
+	background: #428db8;
+	color: #fff;}
+.top a {
+
+	color: #fff;
+}	
+.logo ,
+.nav {
+	float: left;
+}
+
+.logo {
+	padding: 0 60px 0 20px;
+	background: #114e85;
+	font-size: 1em;
+}
+.admin {
+	float: right;
+	margin-right: 20px;
+}
+.nav li ,
+.admin li {
+	float: left;
+}
+.nav li {
+	font-weight: bold;
+}
+.nav li a {
+	display: block;
+	padding: 0 15px;
+}
+.nav li a:hover {background: #42a5cf;}
+.nav .seleted ,
+.nav .seleted:hover {
+	background: #fff;
+	color: #114e85;
+}
+.admin li {
+	margin-left: 20px;
+	font-size: 0.875em;
+}
+
+/*menu*/
+.menu {
+	width: 207px;
+	height: 100%;
+	border-right: 1px solid #ccc;
+	background: #f2f2f2;
+}
+.menu a {
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #ddd;
+	color: #666;
+	font-size: 0.875em;
+	text-indent: 10px;
+}
+.menu a:hover {
+	background: #e5e5e5;
+	color: #333;
+}
+.menu .seleted ,
+.menu .seleted:hover {
+	background: #fff;
+	color: #114e85;
+	font-weight: bold;
+}
+
+/*main*/
+.main {width: 87.4%;}
+.main .bread_nav {
+	padding: 9px 0;
+	margin:0 15px;
+	border-bottom: 1px solid #ddd;
+	color: #666;
+}
+.main .bread_nav a ,
+.main .bread_nav span {
+	font-size: 0.875em;
+	color: #666;
+}
+.main .editing_area {
+	margin: 20px 15px;
+}
+.main .editing li {display: inline;}
+.main .editing a {
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 20px;
+	margin-right: 10px;
+	border-radius: 3px;
+	color: #fff;
+	letter-spacing: 5px;
+	font-weight: bold;
+}
+.main .editing a img {
+	float: left;
+	margin: 8px 10px 0 0;
+}
+.main .editing .add {
+	background: #2dcc70;
+	border-bottom: 2px solid #00a128;
+}
+.main .editing .add:hover {background: #5bdc97;}
+.main .editing .edit {
+	background: #ff7d32;
+	border-bottom: 2px solid #f50000;
+}
+.main .editing .edit:hover {background: #ff9d58;}
+.main .editing .board_pin {
+	background: #a250be;
+	border-bottom: 2px solid #45007d;
+}
+.main .editing .board_pin:hover {background: #bb76d0;}
+.main .editing .delete {
+	background: #fe4b46;
+	border-bottom: 2px solid #b30000;
+}
+.main .editing .delete:hover {background: #fe716c;}
+.main .editing .clean {
+	background: #35c7ff;
+	border-bottom: 2px solid #008fff;
+}
+.main .editing .clean:hover {background: #5bd7ff;}
+
+.main .consult {
+	float: right;
+	height: 32px;
+	border: 1px solid;
+	border-color: #B3B3B3 #E5E5E5 #EAEAEA;
+}
+.main .consult .search_box {
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #fff;
+	font-size: 0.875em;
+	color: #666;
+}
+.main .consult select {
+	float: left;
+	margin: 8px 10px 0 5px;
+	border: 1px solid #fff;
+	color: #666;
+}
+.main .consult .search_btn {
+	width: 24px;
+	height: 32px;
+	background: url(../images/find.png) 0 9px no-repeat;
+}
+.main .consult .search_btn:hover {
+	background: url(../images/find_hover.png) 0 9px no-repeat;
+}
+
+
+.main .content_list {
+	width: 98%;
+	margin: 20px 15px 10px;
+	color: #333;
+}
+.main .content_list caption {
+	color: #114E85;
+	font-size: 1.25em;
+	font-weight: bold;
+	text-align: left;
+}
+.main .content_list tr:hover {background: #f7f7f7;}
+.main .content_list th {
+	padding: 6px 20px;
+	border-bottom: 2px solid #dbdbdb;
+	border-top:1px solid #e5e5e5;
+	background: #f0f0f0;
+	text-align: left;
+}
+.main .content_list th a {
+	color: #4d4d4d;
+} 
+.main .content_list td {
+	padding: 10px 20px;
+	border-bottom: 1px solid #E5E5E5;
+	font-size: 0.875em;
+}
+.main .content_list td a {
+	color: #114E85;
+}
+.content_list .pass {color: #009914;}
+.content_list .stop {color: red;}
+
+
+/*page*/
+.page{
+	text-align:right;
+	padding:20px 0 2px;
+	color: #666;
+	font-size: 0.875em;
+}
+.page a{
+	padding: 3px 4px;
+	background:#fff;
+	border:1px solid #e0e0e0;
+	color: #666;
+}
+.page a:hover{
+	color: #114E85;
+	text-decoration: none;
+	border-color:#114E85;}
+.current {
+	padding: 3px 10px;
+	color: #fff;
+	border:1px solid #114E85;
+	background:#114E85;}
+
+

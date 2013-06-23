@@ -1,0 +1,111 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<link href="__PUBLIC__/Js/artDialog/skins/default.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="__PUBLIC__/Js/artDialog/jquery.artDialog.min.js?skin=default"></script>
+
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span><eq name="ACTION_NAME" value="add">新增<else />编辑</eq>{$pagetitle}分类</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST id="form1" action="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>"  enctype="multipart/form-data">	
+				<TABLE cellpinserting=3 cellspacing=3 style="margin-left:0;"> 
+					<TR> 
+						<TD class="tRight tTop" width="20%">分 类：</TD>
+						<TD class="tLeft"><html:select name="pid" options="cate" selected="vo['pid']" /></TD> 
+					</TR>
+					<eq name="MODULE_NAME" value="Brand">
+					<TR> 
+						<TD class="tRight tTop" width="20%">归属商家：</TD>
+						<TD class="tLeft"><span id="bname">{$vo.bid|GUI='nickname'}</span><input type="button" onclick="selectbrand();" value="选择商家"><INPUT TYPE="hidden" name="bid" id="bid" value="{$vo.bid}"></TD> 
+					</TR>
+					</eq>
+					<eq name="MODULE_NAME" value="Brand">
+					<TR>  
+						<TD class="tRight">图 标：</TD> 
+						<TD class="tLeft" ><INPUT TYPE="file" class="huge bLeftRequire" name="img" value="{$vo.img}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">&nbsp;</TD> 
+						<TD class="tLeft" ><neq name="vo['img']" value=""><img src="{$vo.img}" border="0"/></neq></TD>
+					</TR>
+					</eq>
+					<TR>
+						<TD class="tRight">标 题：</TD> 
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" name="title" value="{$vo.title}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">备 注：</TD> 
+						<TD class="tLeft" ><textarea class="huge bLeft" name="remark" >{$vo.remark}</textarea></TD>
+					</TR>
+					<!--TR>
+						<TD class="tRight tTop">状 态：</TD>
+						<TD class="tLeft"><html:select name="status" options="zt"  selected="vo['status']"/></TD>
+					</TR--> 
+					<TR>
+						<TD ></TD>
+						<TD>
+						<INPUT TYPE="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$_SERVER[HTTP_REFERER]}"/>
+						<INPUT TYPE="hidden" name="module" value="{$name}">
+						<html:imageBtn style="imgbtndiv" type="submit" value="保 存" />
+						</TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var dg;
+function search(){
+	var kw=$('#searchkw').val();
+	$.ajax({
+	    url: '?s=Brand/getbrand/',
+	    type: "POST",
+	    data: "kw="+kw,
+	    cache: false,
+	    dataType: 'json',
+	    success: function (data) {
+	    	var html="<input id=\"searchkw\" value=\""+kw+"\" ><input value=\"搜索\" type=\"button\" onclick=\"search();\"><select id=\"blist\" size=\"20\" style=\"width:200px\">";
+		    	for (var i = 0; i < data.length; i++) {
+		    		html+="<option value=\""+data[i].id+"\">"+data[i].nickname+"</option>";
+		    	}
+	    	html+="</select>";
+	    	//$('#blist').html(html);
+			dg.content(html);
+	    }
+	});
+}
+function selectbrand(){
+	$.ajax({
+	    url: '?s=Brand/getbrand',
+	    id: 'sbdiv',
+	    cache: false,
+	    dataType: 'json',
+	    success: function (data) {
+	    	var html="<input id=\"searchkw\" ><input value=\"搜索\" type=\"button\" onclick=\"search();\"><select id=\"blist\" size=\"15\" style=\"width:200px\">";
+	    	for (var i = 0; i < data.length; i++) {
+	    		html+="<option value=\""+data[i].id+"\">"+data[i].nickname+"</option>";
+	    	}
+	    	html+="</select>";
+	    	dg=$.dialog({
+	    		id: 'N3690',
+				width:350,
+				height:300,
+				show:false,
+				title: '请选择商家',
+	    		content:html,	    		
+				ok: function () {
+			        $('#bid').val($('#blist').val());
+			        $('#bname').html($('#blist').find("option:selected").text());
+			        return true;
+			    },
+			    cancel: true
+	    	});
+	        //dialog.content(html).show();
+	    }
+	});
+}
+</script>
+<include file="Public:footer" />

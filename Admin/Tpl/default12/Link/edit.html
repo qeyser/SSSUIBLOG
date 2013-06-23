@@ -1,0 +1,46 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span><eq name="ACTION_NAME" value="add">新增<else />编辑</eq>友情链接</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST id="form1" action="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" >	
+				<TABLE cellpadding=3 cellspacing=3  style="margin-left:0;">
+					<TR>  
+						<TD class="tRight">名  称：</TD> 
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="title" value="{$vo.title}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">地  址：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="url" value="{$vo.url}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">LOGO地址：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeft" NAME="logo" value="{$vo.logo}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">排  序：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeft" NAME="sort" value="{$vo.sort}"></TD>
+					</TR>
+					<neq name="MODULE_NAME" value="Link">
+					<TR>
+						<TD class="tRight tTop">内   容：</TD>
+						<TD class="tLeft"><html:editor type="KE" NAME="content" id="cn_content" style="width:700px; height:400px;" >{$vo.content}</html:editor></TD>
+					</TR>
+					</neq>
+					<TR>
+						<TD ></TD>
+						<TD>
+							<INPUT TYPE="hidden" name="id" value="{$vo.id}">
+							<input type="hidden" name="jumpurl" value="{$_SERVER[HTTP_REFERER]}"/>
+							<html:imageBtn style="imgbtndiv" TYPE="reset"  value="重 置" />
+							<html:imageBtn style="imgbtndiv" type="submit" value="保 存" />
+						</TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

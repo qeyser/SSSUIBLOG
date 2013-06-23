@@ -1,0 +1,38 @@
+<include file="Public:header" />
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span><eq name="ACTION_NAME" value='add'>新增<else />编辑</eq>{$tipstitle}</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR> 
+					<TD class="tRight tTop" width="15%">上级分类：</TD>
+					<TD class="tLeft"><html:select name="up" options="cate" selected="vo['up']" /></TD> 
+				</TR> 
+				<TR>
+					<TD class="tRight" >标 题：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="large bLeftRequire" NAME="title" value="{$vo.title}" dataType="*" nullmsg="" errmsg=""></TD>
+				</TR>
+				<TR> 
+					<TD class="tRight tTop">描 述：</TD>
+					<TD class="tLeft"><textarea name="remark" class="huge" style="width:500px;height:200px;">{$vo.remark}</textarea></TD> 
+				</TR>          
+				<TR>
+					<TD class="tRight">状态：</TD>
+					<TD class="tLeft"><html:select name="status" options="zt"  selected="vo['status']"/></TD>
+				</TR>
+
+				<TR>
+					<TD>&nbsp;</TD>
+					<TD>
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<input type="submit" class="submit" value="确 认"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

@@ -1,0 +1,22 @@
+<include file="Public:header" />
+		<div class="bread_nav">
+			<span>文章管理</span>
+		</div>
+		<div class="editing_area clearfix">
+				<form id="SearchA" name="SearchForm" class="adv" action="__URL__" method="POST" >
+					<html:imageBtn name="add_btn" value="新增" click="add();" style="add btn" />
+					<html:imageBtn name="delete_btn" value="删除" click="del();" style="delete btn" />
+					<html:imageBtn name="cache_btn" value="缓存" click="cache();" style="cache btn" />
+					<html:imageBtn name="sort_btn" value="排序" click="sort();" style="sort btn" />
+					<div class="clearfix">
+						<span class="m">
+							标题：<input type="text" class="medium" name="title" />
+						</span>
+						<html:imageBtn value="查询" name="search_btn" type="submit" style="search btn" />		
+					</div>
+				</form>
+		</div>
+			<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|5%,cid|GTC='cate':分类,title:标题|60%:edit,create_time|toDate='Y-m-d H#i':时间|10%,status|SF='id='.$action['id'].'&model=&value=&str1=禁用&str0=启用':状态|5%" actionlist="edit:编辑:id,del:删除:id" />
+		<div class="page">{$page}</div>
+<include file="Public:listjs" />
+<include file="Public:footer" />

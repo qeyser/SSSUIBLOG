@@ -1,0 +1,49 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<import  file="Js.Util.MultiSelect" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function saveAccess(){
+ThinkAjax.sendForm('form1','__URL__/setUser/');
+}
+function goType(type){
+	window.location = '?type='+type;
+}
+//-->
+</SCRIPT>
+<style type="text/css">
+.multiSelect{width: 320px;}
+</style>
+<div class="inner">
+	<h1>组用户列表 [ <a href="__URL__">返 回</a> ]</h1> 
+    <div id="result" class="result none"></div>
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD=POST name="form1" id="form1" id="actionform" ACTION="" class="form_data">
+			<TABLE class="select list" style="width:320px;margin:0;" ALIGN='center'>
+				<TR>
+					<Th class="tRight">
+						当前组：<html:select name="groupId" change="location.href = '__URL__/user/id/'+this.options[this.selectedIndex].value;" first="选择组" style="medium" options="groupList" selected="selectGroupId" />
+					</Th>
+				</TR>
+				<TR>
+					<TD >
+						<html:select name="groupUserId[]" id="sourceS" options="userList" selected="groupUserList"  multiple="true" style="multiSelect" size="15" />
+					</td>
+				</tr> 
+				<tr>
+					<td  class="row tCenter" >
+                        <html:imageBtn style="imgbtndiv"  type="button" click="allSelect()" value="全 选" />&nbsp;
+                        <html:imageBtn style="imgbtndiv"  type="button" click="InverSelect()" value="反 选" />&nbsp;
+                        <html:imageBtn style="imgbtndiv"  type="button" click="allUnSelect()" value="全 否" />&nbsp;
+                        <html:imageBtn style="imgbtndiv"  type="button" click="saveAccess()" value="保 存" />&nbsp;
+						<INPUT TYPE="hidden" NAME="groupId" VALUE="{$Think.get.id}" >
+						<INPUT TYPE="hidden" name="ajax" VALUE="1">
+					</td>
+				</tr>
+			</TABLE>
+		</FORM>
+	</div>
+</div>
+<include file="Public:footer" />
+

@@ -1,0 +1,24 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="inner">
+	<h1>管理友情链接</h1> 
+	<form action="__URL__" METHOD="POST" name="search" >
+		<p>
+			<html:imageBtn style="imgbtndiv"  type="button" name="add" value="新增" click="javascript:window.location='__URL__/add'" />
+			<html:imageBtn style="imgbtndiv"  type="button" name="delete" value="删除" click="del()" />
+			<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="缓存" click="cache()" />
+			<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="排序" click="paixu()" />
+			标题:<input type="text" name="title" value="" />
+			<input type="submit" name="submit" value="查询" click="chaxun()" />
+		</p>
+		<div class="chaxun"></div>
+	</form>
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD=POST name="search" ACTION="" class="form_data">
+			<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|5%,title:名称:edit,url:地址,sort:排序,status|SF='id='.$action['id'].'&model=&value=&str1=禁用&str0=启用':状态" actionlist=",edit:编辑:id,del:删除:id" />
+		</form>
+		<div class="page">{$page}</div>
+	</div>
+</div>
+<include file="Public:footer" />

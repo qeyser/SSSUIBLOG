@@ -1,0 +1,49 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="inner">
+	<div class="onecolumn">
+		<div class="header"><span class=""><eq name="ACTION_NAME" value="add">新增<else />编辑</eq>组</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST  id="form1" name="" action="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>">
+				<TABLE cellpinserting=3 cellspacing=3 style="margin-left:0;">
+					<TR>
+						<TD class="tRight" >组名：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" check='^\S+$'  warning="组名不能为空,且不能含有空格" NAME="name" value="{$vo.name}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >所需积分：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire" NAME="needsource" value="{$vo.needsource}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >上级组：</TD>
+						<TD class="tLeft" >
+							<html:select options="list" name="pid" selected="vo['pid']"/>
+						</TD>
+					</TR>
+					<TR>
+						<TD class="tRight">组状态：</TD>
+						<TD class="tLeft"><SELECT class="small bLeft"   NAME="status">
+						<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+						<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+						</SELECT></TD>
+					</TR>
+					<TR>
+						<TD class="tRight tTop">描 述：</TD>
+						<TD class="tLeft"><TEXTAREA class="large bLeft" NAME="remark"  ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+					</TR>
+					<TR>
+						<TD ></TD>
+						<TD class="center">
+							<INPUT TYPE="hidden" name="id" value="{$vo.id}" >
+							<html:imageBtn style="imgbtndiv"  type="submit" value="保存" />
+							<html:imageBtn style="imgbtndiv" TYPE="reset"  value="重 置" />
+						</TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+
+<include file="Public:footer" />

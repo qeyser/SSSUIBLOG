@@ -1,0 +1,68 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function savesort(){
+sl.ok();
+sendForm('form1','__URL__/saveSort/','result');
+}
+//-->
+</SCRIPT>
+<script type="text/javascript" src="../Public/Js/SortSelect.js"></script>
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span class="">友情链接排序</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST name = 'form1' id="form1">
+				<TABLE cellpinserting=0 cellspacing=0 width="350">
+					<TR>
+						<TD align="right">
+							<input name="search" type="text" class="large">							
+						</TD>
+						<TD width="25%" valign="top" style="vertical-align:top;">
+							<html:imageBtn style="imgbtndiv"  type="button" value="查询" click="sl.Search()" />
+						</TD>
+					</TR>
+					<TR >
+						<TD width="75%" align="right">
+							<SELECT class="multiSelect" name="sort" size="15" style="width:100%">
+								<?php $i=1; ?>
+								<voList name="sortList" id="page" >
+								<option value="{$page.id}"><?php echo $i++; ?>.{$page.title}</option>
+								</voList>
+							</SELECT>
+						</TD>
+						<TD width="25%" valign="top" style="vertical-align:top;">
+							<html:imageBtn style="imgbtndiv"  type="button" value="第一" click="sl.fnFirst()"  /><br>
+							<html:imageBtn style="imgbtndiv"  type="button" value="上移" click="sl.sortUp()"  />
+							<br>
+							<html:imageBtn style="imgbtndiv"  type="button" value="下移" click="sl.sortDown()"  />
+							<br>
+							<html:imageBtn style="imgbtndiv"  type="button" value="最后" click="sl.fnEnd()"  />
+							<br>
+							<div class="fLeft vMargin"><INPUT TYPE="text" NAME="jumpNum" size="3"></div>
+							<br>
+							<html:imageBtn style="imgbtndiv"  type="button" value="跳转" click="sl.jump()"  />	
+						</TD>
+					</TR>
+					<TR>
+						<TD align="right">
+							<INPUT TYPE="hidden" name="seqNoList">
+							<INPUT TYPE="hidden" name="ajax" VALUE="1">
+							<html:imageBtn style="imgbtndiv"  type="button" name="save" value="确定" click="savesort()"  /> 
+							<html:imageBtn style="imgbtndiv"  name="reset" type="reset" value="取消" click="history.back()"  />
+						</TD>
+						<TD width="25%" valign="top" style="vertical-align:top;">&nbsp;</TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var sl = new SortSelect('form1','sort','search','jumpNum');
+//-->
+</SCRIPT>
+<include file="Public:footer" />

@@ -1,0 +1,58 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span class=""><eq name="ACTION_NAME" value="add">新增<else />编辑</eq>
+		广告</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD="POST" id="form1" name="form1" enctype="multipart/form-data" action="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>">
+				<TABLE cellpinserting=3 cellspacing=3 style="margin-left:0;">
+					<TR>  
+						<TD class="tRight" width="10%">分   类：</TD> 
+						<TD class="tLeft" >	<html:select name="cid" options="cate" selected="vo['cid']" /></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" width="10%">名 称：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" check='Require' NAME="title" value="{$vo.title}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >格  式：</TD>
+						<TD class="tLeft" ><html:select name="format" options="format"  selected="vo['format']"/></TD>
+					</TR>
+					<TR>  
+						<TD class="tRight" width="10%">文  件：</TD> 
+						<TD class="tLeft" ><INPUT TYPE="file" name="url" class="file huge" ></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" width="10%">链  接：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="link" value="{$vo.link}"></TD>
+					</TR>
+					<TR> 
+						<TD class="tRight tTop">内 容：</TD>
+						<TD class="tLeft"><html:editor type="KE" NAME="content" width="900" style="width:900px; height:auto;" >{$vo.content}</html:editor></TD> 
+					</TR>  
+					<TR>
+						<TD class="tRight" width="10%">排  序：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="sortId" value="{$vo.sortId}"></TD>
+					</TR>        
+					<TR>
+						<TD class="tRight">状态：</TD>
+						<TD class="tLeft"><html:select name="status" options="zt"  selected="vo['status']"/></TD>
+					</TR>
+					<TR>
+						<TD ></TD>
+						<TD class="center">
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<html:imageBtn style="imgbtndiv" TYPE="reset"  value="重 置" />
+						<html:imageBtn style="imgbtndiv" type="submit" value="保 存" />
+						</TD>
+					</TR>
+				</form>
+			</TABLE>
+		</div>
+	</div>
+</div>
+
+<include file="Public:footer" />

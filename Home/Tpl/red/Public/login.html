@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {$seoinfo}
+	<link rel='stylesheet' id='wp-admin-css'  href='../Public/css/login.css' type='text/css' media='all' />
+	<meta name='robots' content='noindex,nofollow' />
+</head>
+<body class="login login-action-login wp-core-ui">
+	<div id="login">
+		<h1><a href="/" title="{:C('WEB_TITLE')}">{:C('WEB_TITLE')}</a></h1>
+	
+		<form name="loginform" id="loginform" action="Public_checkLogin.html" method="post">
+			<p>
+				<label for="user_login">用户名<br />
+				<input type="text" name="account" id="user_login" class="input" value="" size="20" /></label>
+			</p>
+			<p>
+				<label for="user_pass">密码<br />
+				<input type="password" name="password" id="user_pass" class="input" value="" size="20" /></label>
+			</p>
+			<p><img onclick="window.location='qq_login.html'" src="../Public/images/qq_login.gif" alt="使用QQ登陆" style="cursor: pointer; margin-right: 20px;" /></p>	<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever"  /> 记住我的登录信息</label></p>
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="登录" />
+			</p>
+			<input type="hidden" name="Referer" value="{$Think.server.HTTP_Referer}" />
+		</form>
+	</div>
+	<div class="clear"></div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?php
+return array (
+  'SHOW_ERROR_MSG' => true,
+  'DEFAULT_THEME' => 'red',
+  'URL_CASE_INSENSITIVE' => true,
+  'URL_PATHINFO_FETCH' => 'ORIG_PATH_INFO,REDIRECT_PATH_INFO,REDIRECT_URL',
+  'URL_DISPATCH_ON' => 1,
+  'USER_AUTH_ON' => true,
+  'USER_AUTH_TYPE' => 2,
+  'RBAC_ROLE_TABLE' => 'z_role',
+  'RBAC_USER_TABLE' => 'z_role_user',
+  'RBAC_ACCESS_TABLE' => 'z_access',
+  'RBAC_NODE_TABLE' => 'z_node',
+  'USER_AUTH_MODEL' => 'User',
+  'AUTH_PWD_ENCODER' => 'md5',
+  'REQUIRE_AUTH_MODULE' => '',
+  'NOT_AUTH_ACTION' => '',
+  'REQUIRE_AUTH_ACTION' => '',
+  'LIKE_MATCH_FIELDS' => 'title|remark',
+  'TAG_NESTED_LEVEL' => 3,
+  'UPLOAD_FILE_RULE' => 'uniqid',
+  'DATA_CACHE_TYPE' => 'File',
+  'SESSION_EXPIRE' => 864000,
+  'COOKIE_EXPIRE' => 864000,
+);
+?>

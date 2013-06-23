@@ -1,0 +1,33 @@
+
+                            <div class="sidebar_content">
+                                <h3 class="h_title">文章分类</h3>
+                                <ul class="list">
+									<volist name="CateList" id="CateVo">
+									<li><a href="category_{$CateVo.id}.html">{$CateVo.title}</a></li>
+									</volist>
+                                </ul>
+                            </div>
+                            <div class="sidebar_content">
+                                <h3 class="h_title">热门点击</h3>
+                                <ul class="list">
+									<volist name="NearList" id="NearVo">
+									<li><a href="{$NearVo.id}.html">{$NearVo.title}</a></li>
+									</volist>
+                                </ul>
+                            </div>
+                            <div class="sidebar_content">
+                                <h3 class="h_title">最近评论</h3>
+                                <ul class="list">
+									<volist name="NearComment" id="NearCommentVo">
+									<li><a href="{$NearCommentVo.pid}.html">{$NearCommentVo.content}</a></li>
+									</volist>
+                                </ul>
+                            </div>
+                            <div class="sidebar_content">
+                                <h3 class="h_title">友情连接</h3>
+                                <ul class="list">
+									<volist name="LinkList" id="LinkVo">
+									<li><a href="{$LinkVo.link}">{$LinkVo.title}</a></li>
+									</volist>
+                                </ul>
+                            </div>

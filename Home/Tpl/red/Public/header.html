@@ -1,0 +1,69 @@
+        <div class="bg">
+            <!--这是头部-->
+            <div class="header">
+                <h1>
+                    <a href="/" class="logo no_outline" title="{:C('WEB_NAME')}">{:C('WEB_NAME')}</a>
+                </h1>
+                <form class="search" onsubmit="return false;">
+                    <input type="hidden" name="m" id="module">
+                    <input type="hidden" name="a" value="search">
+                    <input type="text" class="search_text left" name="kw" value="请输入要查询的关键字，例如：SSSUI"
+                    onfocus="if($(this).val()=='请输入要查询的关键字，例如：SSSUI') $(this).val('');"
+                    onblur="if($(this).val()=='') $(this).val('请输入要查询的关键字，例如：SSSUI');"
+                    id="kw">
+                    <input type="submit" class="search_btn right no_outline" value="搜索" title="搜索"
+                    onclick="search()">
+                </form>
+                <eq name="Think.session.uid" value="-2">
+                <div class="login_bar clearfix">
+                    <a href="register.html" class="register right no_outline" target="_blank" title="注册">注册</a>
+                    <a href="login.html" class="login right no_outline" target="_blank" title="本站登录">本站登录</a>
+                    <a href="javascript:void(0);"  onclick="window.location='{:U('Home/Bind/qq_login')}';" class="qq_login right no_outline"  title="QQ账号登录">QQ账号登录</a>
+                </div>
+                <else/>
+                <div class="login_bar clearfix">
+                    <div class="info right">
+                        <a title="" target="_blank" href="#" class="userName"><strong class="vwmy">{$Think.session.uid|GUI=nickname}</strong></a>
+                        <!-- <p class="showmenu">功德: {$userinfo.gongde} | 称号:{$userinfo.chenghao}</p> -->
+                        <p>
+                            <eq name="Think.session.uid" value="-1"><a href="admin.php">管理</a> |</eq>
+                            <a href="Public_logout.html">退出</a>
+                        </p>
+                    </div>
+                    <div class="avatar right" style="margin-right:10px;">
+                        <a href="#" title="进入会员中心" target="_blank"><img src="{$Think.session.uid|GUI=avatar}" width="50" height="50"></a>
+                    </div>
+                </div>
+                </eq>
+                <div class="nav clearfix">
+                    <ul>
+                        <li>
+                            <a href="/">首 页</a>
+                        </li>
+                        <volist name="navigation" id="NavVo">
+                        <!--class="curr"-->
+                        <li><a href="{$NavVo.link}">{$NavVo.title}</a></li>
+                        </volist>
+                    </ul>
+                    <!-- <div class="cnav clearfix" style="display: none; ">                        
+                        <ul>
+                            <li><a href="#" target="_blank">佛学知识</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" target="_blank">佛学知识</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" target="_blank">佛学知识</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" target="_blank">佛学知识</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" target="_blank">佛学知识</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" target="_blank">佛学知识</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>

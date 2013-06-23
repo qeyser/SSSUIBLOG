@@ -1,0 +1,105 @@
+<include file="Public:header" />
+<style type="text/css">
+	td {overflow:hidden;}
+	.ztitle{
+		display:inline-block;
+		width:100px;
+		text-align:right;
+	}
+	.bLeft{
+		margin-top:2px;
+	}
+</style>
+		<div class="bread_nav">
+			<span>站点优化</span>
+		</div>
+		<div class="editing_area clearfix">
+			<form id="SearchA" name="SearchForm" class="adv" method="POST">
+				<select onchange="window.location='?s=/Seo/index/module/'+this.value;">
+					<?php
+						$module=$_GET['module'] ? $_GET['module'] : 'index';
+						foreach ($list as $k1 => $v1) {
+							foreach ($v1 as $k2 => $v2) {
+								if ($k2=='remark'){continue;}
+								echo '<OPTGROUP label="'.$v2['remark'].'">';
+								foreach ($v2 as $k3 => $v3) {
+									if ($k3!='remark'){
+										if ($module==$k3){
+											echo '<option value="'.$k3.'" selected="selected">'.$v3['remark'].'</option>';
+											$eachlist=$v3;
+											$curr=$k1.'|'.$k2.'|'.$k3;
+										}else{
+											echo '<option value="'.$k3.'">'.$v3['remark'].'</option>';
+										}
+									}
+								}
+								echo '</OPTGROUP>';
+							}
+						}
+					?>
+				</select>
+			</form>
+		</div>
+		<FORM METHOD=POST id="form1" name="form1" action="__URL__/update">
+			<div class="list" >
+				<table id="checkList" class="list" cellpadding=0 cellspacing=0 >
+				<INPUT TYPE="hidden" name="cansnow[remark]" value="{$eachlist.remark}">		
+				<?php
+				foreach ($eachlist as $k => $v) {
+					if ($k=='remark'){continue;}
+				?>
+					<tr class="row" >
+						<td class="tRight" width="200px;">{$v.remark}</td>
+						<td class="tLeft"  >
+							<INPUT TYPE="hidden" name="cansnow[{$k}][remark]" value="{$v.remark}">
+							<label class="ztitle">标题：</label><input type="text" class="bLeft huge t1" name="cansnow[{$k}][title]" value="{$v.title}"><br>
+							<label class="ztitle">关键字：</label><input type="text" class="bLeft huge t2" name="cansnow[{$k}][keyword]" value="{$v.keyword}"><br>
+							<label class="ztitle">页面描述：</label><input type="text" class="bLeft huge t3" name="cansnow[{$k}][description]" value="{$v.description}"><br>					
+						</td>
+					</tr>
+				<?php	
+				}
+				?>
+				</table>
+			</div>
+			<div class="page" style="text-align:center;">
+				<INPUT TYPE="hidden" name="curr" value="{$curr}">
+			<html:imageBtn style="imgbtndiv"  type="submit" name="sort" value="保 存" />
+			</div>
+		</FORM>
+<include file="Public:footer" />
+<script type="text/javascript">
+<!--
+	var xx=0;
+	function insert(str){
+		var obj = $(".bLeft:eq("+xx+")").get(0);
+        if (document.selection) {
+            obj.focus();
+            var sel = document.selection.createRange();
+            sel.text = str;
+        } else if (typeof obj.selectionStart === 'number' && typeof obj.selectionEnd === 'number') {
+            var startPos = obj.selectionStart;
+            var endPos = obj.selectionEnd;
+            var tmpStr = obj.value;
+            obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);
+        } else {
+            obj.value += str;
+        }
+		//$(".bLeft:eq("+xx+")").val($(".bLeft:eq("+xx+")").val()+str);
+		$(".bLeft:eq("+xx+")").focus();
+	}
+	$('.bLeft').blur(function(){
+		xx=$('.bLeft').index($(this));
+	});
+	$(function () {
+		$('.t1').after('&nbsp;<a class="kj">页面标题</a>&nbsp; | &nbsp;<a class="kj">全局标题</a>');
+		$('.t2').after('&nbsp;<a class="kj">页面关键字</a>|&nbsp; <a class="kj">全局关键字</a>');
+		$('.t3').after('&nbsp;<a class="kj">页面描述</a>&nbsp;|&nbsp; <a class="kj">全局描述</a>');
+		$('.kj').attr('href','javascript:void(0);');
+		$('.kj').click(function(){
+			xx=$('.bLeft').index($(this).prevAll('.bLeft'));
+			insert('{'+$(this).html()+'}');
+		});
+    });
+//-->
+</script>

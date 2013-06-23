@@ -1,0 +1,56 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<style type="text/css">
+	td {overflow:hidden;}
+	.ztitle{
+		display:inline-block;
+		width:100px;
+		text-align:right;
+	}
+	.bLeft{
+		margin-top:2px;
+	}
+	li{display:inline-block;width:150px;}
+</style>
+<div class="inner">
+	<h1>系统设置管理</h1> 
+	<form action="__URL__" METHOD="POST" name="search" >
+		<p>
+			<html:imageBtn style="imgbtndiv"  type="button" name="insert" value="新增" click="add()"  />
+			<html:imageBtn style="imgbtndiv"  type="button" name="delete" value="删除" click="del()"  />
+			<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="缓存" click="cache()"  />
+			<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="排序" click="paixu()"  />
+		</p>
+		<div class="chaxun" id="searchM"></div>
+	</form>
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD=POST id="form1" name="form1" action="__URL__/update">
+			<div class="list" >
+				<table id="checkList" class="list" cellpadding=0 cellspacing=0 >
+					<tr class="row" >
+						<th class="tCenter" colspan="2">编辑器设置</th>
+					</tr>
+					<tr class="row" >
+						<td class="tRight" width="200px;">编辑器设置</td>
+						<td class="tLeft"  >
+							<volist name="editorconfig" id="evo">
+								<li><input type="checkbox" name="editorconfig[]" id="{$key}"><label for="{$key}" >{$evo}</label></li>
+							</volist>	
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="page" style="text-align:center;">
+				<INPUT TYPE="hidden" name="curr" value="{$curr}">
+			<html:imageBtn style="imgbtndiv"  type="submit" name="sort" value="保 存" />
+			</div>
+		</FORM>
+	</div>
+</div>
+<include file="Public:footer" />
+<script type="text/javascript">
+	$(function(){
+		$('.list tr').unbind() 
+	});
+</script>

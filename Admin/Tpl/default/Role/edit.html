@@ -1,0 +1,48 @@
+<include file="Public:header" />
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span><eq name="ACTION_NAME" value='add'>新增<else />编辑</eq>角色</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR>
+					<TD class="tRight" >组名：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" datatype='/^\S+$/i' nullmsg="组名不能为空,且不能含有空格" NAME="name" value="{$vo.name}"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >所需功德：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire"  datatype='/^\d+$/i' nullmsg="所需功德不能为空,且只能为数字" NAME="needsource" value="{$vo.needsource}"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >上级组：</TD>
+					<TD class="tLeft" >
+						<html:select options="list" name="pid" selected="vo['pid']"/>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight">组状态：</TD>
+					<TD class="tLeft">
+						<SELECT class="small bLeft"   NAME="status">
+							<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+							<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+						</SELECT>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight tTop">描 述：</TD>
+					<TD class="tLeft"><TEXTAREA class="large bLeft" NAME="remark"  ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+				</TR>
+				<TR>
+					<TD>&nbsp;</TD>
+					<TD>
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<input type="submit" class="submit" value="确 认"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

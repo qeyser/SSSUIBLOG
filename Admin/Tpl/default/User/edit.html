@@ -1,0 +1,98 @@
+<include file="Public:header" />
+		<script src="__PUBLIC__/Js/PCASClass.js" charset="GB2312"></script>
+		<script src="__PUBLIC__/Js/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span><eq name="ACTION_NAME" value='add'>新增<else />编辑</eq>用户</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR>
+					<TD class="tRight" >用户名：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire"  datatype='/^\S+$/i' warning="用户名不能为空,且不能含有空格" NAME="account" value="{$vo.account}" readonly></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >密 码：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" NAME="password" value="">需要修改密码才填写!</TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >用户组：</TD>
+					<TD class="tLeft" ><html:select options="rolearr" name="roleid" selected="roleid" /></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >昵称：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" NAME="nickname" value="{$vo.nickname}"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >银两：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" NAME="money" value="{$vo.money}"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >功德：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" NAME="gongde" value="{$vo.gongde}"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >性别:</TD>
+					<TD class="tLeft" >
+						<input name="sex" type="radio" value="1" <?php if ($vo['sex']==1){ echo 'checked="checked" '; }?> />男
+						<input name="sex" type="radio" value="2"  <?php if ($vo['sex']==2){ echo 'checked="checked" '; }?>/>女
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >详细地址</TD>
+					<TD class="tLeft" ><input type="text" class="medium_Inp_Text"  name="addr" id="addr" value="{$vo.addr}" /></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >生日:</TD>
+					<TD class="tLeft" ><input type="text" class="medium_Inp_Text" name="birthday" id="birthday" readonly="readonly" value="{$vo.birthday|toDate='Y-m-d'}"  onfocus="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d'})"/></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >地区：</TD>
+					<TD class="tLeft" >
+						<select name="p" id="p"></select>
+						<select name="c" id="c"></select>
+						<select name="x" id="x"></select>
+						<script>new PCAS("p","c","x","{$vo.p}","{$vo.c}","{$vo.x}");</script>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >电话</TD>
+					<TD class="tLeft" ><input type="text" class="medium_Inp_Text" name="mobi" id="mobi"value="{$vo.mobi}" /></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >QQ</TD>
+					<TD class="tLeft" ><input type="text" class="medium_Inp_Text" name="qq" id="qq"value="{$vo.qq}" /></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >身份证</TD>
+					<TD class="tLeft" ><input type="text" class="medium_Inp_Text" name="cardnum" id="cardnum"value="{$vo.cardnum}" /></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >个人介绍：</TD>
+					<TD class="tLeft" ><textarea name="aboutme" style="width: 307px; height: 93px;">{$vo.aboutme}</textarea></TD>
+				</TR>
+				<TR>
+					<TD class="tRight tTop">备  注：</TD>
+					<TD class="tLeft"><TEXTAREA class="large bLeft"  NAME="remark" ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+				</TR>
+				<TR>
+					<TD class="tRight">状态：</TD>
+					<TD class="tLeft"><SELECT class="small bLeft"  NAME="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+					</SELECT></TD>
+				</TR>
+				<TR>
+					<TD>&nbsp;</TD>
+					<TD>
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<input type="submit" class="submit" value="确 认"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

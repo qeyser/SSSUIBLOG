@@ -1,0 +1,40 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span class="">查看详细</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST id="form1" name="form1" action="__URL__/update"  enctype="multipart/form-data">
+				<TABLE cellpinserting=3 cellspacing=3 > 
+					<TR>  
+						<TD class="tRight" nowrap="nowrap">会  员：</TD> 
+						<TD class="tLeft" nowrap="nowrap">{$vo.nickname}</TD>
+					</TR>
+					<TR>  
+						<TD class="tRight" nowrap="nowrap">反馈内容：</TD> 
+						<TD class="tLeft" >{$vo.content}</TD>
+					</TR>
+					<TR>  
+						<TD class="tRight" nowrap="nowrap">邮  箱：</TD> 
+						<TD class="tLeft" >{$vo.email}</TD>
+					</TR>
+					<TR>  
+						<TD class="tRight" nowrap="nowrap">电话：</TD> 
+						<TD class="tLeft" >{$vo.tel}</TD>
+					</TR>
+					<TR>  
+						<TD class="tRight" nowrap="nowrap">时间：</TD> 
+						<TD class="tLeft" >{$vo.create_time|toDate='Y-m-d H#i'}</TD>
+					</TR>
+					<TR>
+						<TD ></TD>
+						<TD><html:imageBtn style="imgbtndiv"  type="button" value="返  回" class="button small" click="history.back();"></TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+
+<include file="Public:footer" />

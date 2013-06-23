@@ -1,0 +1,48 @@
+<include file="Public:header" />
+<script language="JavaScript">
+<!--
+	function fleshMenu(){
+		ThinkAjax.send('__URL__/fleshMenu','ajax=1');
+		//parent.menu.location.reload();
+	}
+//-->
+</script>
+		<div class="bread_nav">
+			<span><present name="nodeName">[{$nodeName}] </present><eq name="level" value="1">应用</eq><eq name="level" value="2">模块</eq><eq name="level" value="3">操作</eq>列表 <span style="font-weight:normal">[ 分组:&nbsp;<volist name="groupList" id="tag"><A HREF="__URL__/index/group_id/{$key}">{$tag}</A>&nbsp;</volist><a href="__URL__">所有</a> ] </span></span>
+		</div>
+		<div class="editing_area clearfix">
+				<form id="SearchA" name="SearchForm" class="adv" method="POST" >
+					<html:imageBtn name="add_btn" value="新增" click="add();" style="add btn" />
+					<html:imageBtn name="delete_btn" value="删除" click="del();" style="delete btn" />
+					<html:imageBtn name="cache_btn" value="缓存" click="cache();" style="cache btn" />
+					<html:imageBtn name="sort_btn" value="排序" click="sort();" style="sort btn" />
+					<html:imageBtn name="fleshMenu_btn" value="刷新" click="fleshMenu()" style="cache btn" />
+					<div class="clearfix">
+						<span class="m">
+							名称：<input type="text" class="medium" name="name" />
+						</span>
+						<html:imageBtn value="查询" name="search_btn" type="submit" style="search btn" />
+						<html:imageBtn name="sort_btn" value="高级" click="adv(this);" style="adv1 btn" />			
+					</div>
+					<div id="SearchC">
+						<table>							
+							<TR>
+								<TD>显示名：</TD>
+								<TD><INPUT TYPE="text" NAME="title" class="medium " ></TD>
+								<TD>描述：</TD>
+								<TD ><INPUT TYPE="text" NAME="remark" class="large "></TD>
+								<TD>状态：</TD>
+								<TD><SELECT class="small bLeft" NAME="status">
+								<option value="">选择</option>
+								<option value="1">正常</option>
+								<option value="0">禁止</option>
+								</SELECT></TD>
+							</TR>
+						</table>
+					</div>
+				</form>
+		</div>
+		<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|10%,name:名称:child,title:显示名:edit,group_id|GetNodeGroupName:分组名,sort:排序,status|SF='model=&field=&value=&str0=启用&str1=禁用&id='.$action['id']:状态" actionlist="edit:编辑:id,del:删除:id" />
+		<div class="page">{$page}</div>
+<include file="Public:listjs" />
+<include file="Public:footer" />

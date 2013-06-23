@@ -1,0 +1,72 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header">
+			<span class="">编辑<eq name="vo.level"  value="1">应用</eq><eq name="vo.level" value="2">模块</eq><eq name="vo.level"  value="3">操作</eq></span>
+			<p>[ <A HREF="__URL__">返回列表</A> ]</p>
+		</div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST  id="form1" >
+				<TABLE cellpinserting=3 cellspacing="3" style="margin-left:0;">
+					<TR>
+						<TD class="tRight" ><eq name="vo.level"  value="1">应用</eq><eq name="vo.level" value="2">模块</eq><eq name="vo.level"  value="3">操作</eq>名：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire" check='Require' warning="<eq name="vo.level" value="1">应用</eq><eq name="vo.level" value="2">模块</eq><eq name="vo.level" value="3">操作</eq>名称不能为空,且不能含有空格"  NAME="name" value="{$vo.name}"></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >显示名：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire" check='Require' warning="显示名称必须" NAME="title" value="{$vo.title}"></TD>
+					</TR>
+					<eq name="vo.level" value="2">
+					<TR>
+						<TD class="tRight" >组件名：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="module" value="{$vo.module}">
+						</TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >分 组：</TD>
+						<TD class="tLeft" >
+						<SELECT class="medium bLeft" NAME="group_id">
+						<option value="0">首页</option>
+						<volist name="list" id="group">
+						<option value="{$group.id}" <eq name="group.id" value="$vo['group_id']">selected</eq>>{$group.title}</option>
+						</volist>
+						</SELECT>
+						</TD>
+					</TR>
+					<TR>
+						<TD class="tRight">是否显示：</TD>
+						<TD class="tLeft"><SELECT class="small bLeft"  NAME="is_show">
+						<option <eq name="vo.is_show" value="1" >selected</eq> value="1">显示</option>
+						<option <eq name="vo.is_show" value="0" >selected</eq> value="0">不显示</option>
+						</SELECT></TD>
+					</TR>
+					</eq>
+					<TR>
+						<TD class="tRight">状态：</TD>
+						<TD class="tLeft"><SELECT class="small bLeft"  NAME="status">
+						<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+						<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+						</SELECT></TD>
+					</TR>
+					<TR>
+						<TD class="tRight tTop">描 述：</TD>
+						<TD class="tLeft"><TEXTAREA class="large bLeft" NAME="remark"  ROWS="5" COLS="57">{$vo.remark}</TEXTAREA></TD>
+					</TR>
+					<TR>
+						<TD ></TD>
+						<TD class="center">
+							<INPUT TYPE="hidden" name="id" value="{$vo.id}" >
+							<INPUT TYPE="hidden" name="ajax" value="1">
+							<INPUT TYPE="hidden" name="pid" value="{$vo.pid}">
+							<html:imageBtn style="imgbtndiv" type="button" value="保存" click="sendForm('form1','__URL__/update/','tips')" />
+							<html:imageBtn style="imgbtndiv" TYPE="reset" click="history.back(-1)" value="取消" />
+						</div></TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

@@ -1,0 +1,90 @@
+<include file="Public:header" />
+<script src="__PUBLIC__/Js/My97DatePicker/WdatePicker.js"></script>
+		<div class="bread_nav">
+			<span>用户管理</span>
+		</div>
+		<div class="editing_area clearfix">
+				<form id="SearchA" name="SearchForm" class="adv" method="POST" >
+					<html:imageBtn name="add_btn" value="新增" click="add();" style="add btn" />
+					<html:imageBtn name="delete_btn" value="删除" click="del();" style="delete btn" />
+					<html:imageBtn name="cache_btn" value="缓存" click="cache();" style="cache btn" />
+					<html:imageBtn name="sort_btn" value="排序" click="sort();" style="sort btn" />
+					<div class="clearfix">
+						<span class="m">
+							账号：<input type="text" class="medium" name="account" />
+						</span>
+						<html:imageBtn value="查询" name="search_btn" type="submit" style="search btn" />
+					<html:imageBtn name="sort_btn" value="高级" click="adv(this);" style="adv1 btn" />			
+					</div>
+					<div id="SearchC">
+						<table>
+							<TR>
+								<TD>昵称：</TD>
+								<TD><INPUT TYPE="text" NAME="nickname" class="medium " ></TD>
+								<TD>性别：</TD>
+								<TD><SELECT class="small bLeft" NAME="sex">
+										<option value="0">不限</option>
+										<option value="1">男</option>
+										<option value="2">女</option>
+									</SELECT>
+								</TD>
+								<TD>登录次数：</TD>
+								<TD>
+									<SELECT class="small bLeft" NAME="op1">
+										<option value="0">＞</option>
+										<option value="1">＝</option>
+										<option value="2">＜</option>
+										<option value="3">≥</option>
+										<option value="4">≤</option>
+										<option value="5">!=</option>
+									</SELECT>
+									<INPUT TYPE="text" NAME="login_count" class="small " >
+								</TD>
+							</TR>
+							<TR>
+								<TD>功德：</TD>
+								<TD>
+									<SELECT class="small bLeft" NAME="op2">
+										<option value="0">＞</option>
+										<option value="1">＝</option>
+										<option value="2">＜</option>
+										<option value="3">≥</option>
+										<option value="4">≤</option>
+										<option value="5">!=</option>
+									</SELECT>
+									<INPUT TYPE="text" NAME="gongde" class="small " >
+								</TD>
+								<TD>银两：</TD>
+								<TD>
+									<SELECT class="small bLeft" NAME="op3">
+										<option value="0">＞</option>
+										<option value="1">＝</option>
+										<option value="2">＜</option>
+										<option value="3">≥</option>
+										<option value="4">≤</option>
+										<option value="5">!=</option>
+									</SELECT>
+									<INPUT TYPE="text" NAME="money" class="small " >
+								</TD>
+								<TD>注册时间：</TD>
+								<TD>
+									<SELECT class="small bLeft" NAME="op4">
+										<option value="0">＞</option>
+										<option value="1">＝</option>
+										<option value="2">＜</option>
+										<option value="3">≥</option>
+										<option value="4">≤</option>
+										<option value="5">!=</option>
+									</SELECT>
+									<INPUT TYPE="text" NAME="create_time" class="small" readonly="readonly" onfocus="WdatePicker({skin:'whyGreen',maxDate:'%y-%M-%d'})" value="">
+								</TD>
+							</TR>
+							</TABLE>
+						</table>
+					</div>
+				</form>
+		</div>
+		<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|8%,account:账号:read:,nickname:昵称,create_time|toDate='Y-m-d H#i#s':注册时间,last_login_time|toDate='Y-m-d H#i#s':上次登录,login_count:登录次数,status|SF='model=&field=&value=&str0=启用&str1=禁用&id='.$action['id']:状态" actionlist="edit:编辑:id,del:删除:id" />
+		<div class="page">{$page}</div>
+<include file="Public:listjs" />
+<include file="Public:footer" />

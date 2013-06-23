@@ -1,0 +1,44 @@
+<include file="Public:header" />
+<style type="text/css">
+.editing_list{border: 1px solid;width:265px}
+.multiSelect{width: 100%;height: 100%;}
+</style>
+        <script type="text/javascript" src="../Public/js/Validform.js"></script>
+		<script type="text/javascript" src="../Public/js/JTree.js"></script>
+		<script type="text/javascript" src="../Public/js/MultiSelect.js"></script>
+		<div class="bread_nav"><span>应用授权</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD=POST name="form1" id="form1" ACTION="__URL__/setApp/" class="form_data">
+            <TABLE class="select list" style="width:310px;margin:0;" align="center" id="select">
+                <TR>
+					<Th class="tCenter">
+						应用授权 | 
+						<A HREF="__URL__/module/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">模块授权</A> | 
+						<A HREF="__URL__/action/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">操作授权</A> | 
+						<a href="__URL__/area/groupId/{$Think.get.groupId}/appId/{$Think.get.appId}/moduleId/{$Think.get.moduleId}/actionId/{$Think.get.actionId}">局部授权</a>
+                    </Th>
+				</TR>
+                <TR><Td class="tLeft">当前分组：<html:select name="groupId" style="medium" change="location.href = '__ACTION__/groupId/'+this.options[this.selectedIndex].value;" first="选择组" options="groupList" selected="selectGroupId" />
+                </Td></TR>
+                <TR><TD >
+                <html:select id="groupAppId" name="groupAppId[]" options="appList" selected="groupAppList"  multiple="true" style="multiSelect" size="15" />
+                </td>
+                </tr>
+                <tr>
+                    <td  class="row tCenter" >
+                        <input type="button" click="allSelect()" value="全 选" />&nbsp;
+                        <input type="button" click="InverSelect()" value="反 选" />&nbsp;
+                        <input type="button" click="allUnSelect()" value="全 否" />&nbsp;
+                        <input type="submit" value="保 存" />&nbsp;
+                        <!-- <input TYPE="hidden" NAME="groupId" VALUE="{$Think.get.id}" > -->
+                        <input TYPE="hidden" NAME="module" value="Node">
+                        <input TYPE="hidden" name="ajax" VALUE="1">
+                    </td>
+                </tr>
+            </TABLE>
+        </FORM>
+		<script type="text/javascript">
+		$(function(){
+            $('#form1').Validform({tiptype:3,postonce:true,ajaxPost:true});
+		})
+		</script>
+<include file="Public:footer" />

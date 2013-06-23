@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	<!-- Website Title --> 
+	<title>顶部</title>
+	<link href="../Public/css/screen.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../Public/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../Public/css/visualize.css" rel="stylesheet" type="text/css" media="all">
+	<!--[if IE]>
+		<link href="../Public/css/ie.css" rel="stylesheet" type="text/css" media="all">
+		<script type="text/javascript" src="../Public/js/excanvas.js"></script>
+	<![endif]-->
+</head>
+<body style="background: #F7F7F7">
+<div class="content_wrapper">
+	<!-- Begin header -->
+	<div id="header">
+		<div id="logo">
+			<img src="/Public/Uploads/logo.png" width="102" height="16" alt="logo">
+		</div>
+		<div id="search">
+			<form action="?s=Index/search" target="main" id="search_form" name="search_form" method="POST">
+				<input value="Search" id="q" name="q" title="Search" class="search noshadow blur" type="text">
+			</form>
+		</div>
+		<div id="account_info">
+			<img src="../Public/images/icon.online.gif" alt="Online" class="mid_align">
+			你好 <a href="?s=Public/profile" target="main">{$Think.session.Admin_nickname}</a>  |  <a href="?s=Public/password" target="main">修改密码</a>  | <a href="/" target="_blank">预览首页</a> | <a href="Public_logout.html" target="_parent">退出</a>
+		</div>
+	</div>
+	<!-- End header -->
+</div>
+</body>
+</html>

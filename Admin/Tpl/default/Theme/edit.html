@@ -1,0 +1,124 @@
+<include file="Public:header" />
+	<script src="/Public/codemirror/lib/codemirror.min.js"></script>
+    <script src="/Public/codemirror/addon/mode/loadmode.js"></script>
+    <script src="/Public/codemirror/addon/selection/active-line.js"></script>
+	<link rel="stylesheet" href="/Public/codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/neat.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/elegant.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/erlang-dark.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/night.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/monokai.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/cobalt.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/eclipse.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/rubyblue.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/lesser-dark.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/xq-dark.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/xq-light.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/ambiance.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/blackboard.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/vibrant-ink.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/solarized.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/twilight.css">
+	<link rel="stylesheet" href="/Public/codemirror/theme/midnight.css">
+	<div class="bread_nav"><span>编辑主题</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+
+	<FORM METHOD=POST id="form1" name="form1" action="__URL__/update">
+		<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+			<tr>
+				<td>
+					风格设置
+					<select id="select">
+						<option selected>default</option>
+						<option>ambiance</option>
+						<option>blackboard</option>
+						<option>cobalt</option>
+						<option>eclipse</option>
+						<option>elegant</option>
+						<option>erlang-dark</option>
+						<option>lesser-dark</option>
+						<option>midnight</option>
+						<option>monokai</option>
+						<option>neat</option>
+						<option>night</option>
+						<option>rubyblue</option>
+						<option>solarized dark</option>
+						<option>solarized light</option>
+						<option>twilight</option>
+						<option>vibrant-ink</option>
+						<option>xq-dark</option>
+						<option>xq-light</option>
+					</select>
+				</td>
+				<td width="3%">&nbsp;</td>
+				<td>文件列表</td>
+			</tr>
+			<tr>
+				<td width="67%" id="test1">
+					<neq name="file">
+					<div>
+						<?php if (in_array($fileinfo['extension'],$extarr['img'])){ ?>
+						<img src="{$file}" border="0">					
+						<?php }else{?>
+						<textarea id="code" style="height: 800px; width: 100%;" name="filecontent"><?php echo htmlspecialchars(file_get_contents($file)); ?></textarea>
+						<?php } ?>
+						</div>
+					<div>
+						<input type="submit" class="submit" value="保 存" />
+					</div>
+					<input type="hidden" name="file" value="{$file}" />
+					<input type="hidden" name="action" value="save" />
+					<input type="hidden" name="theme" value="{$theme}" />
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+					<else />
+						&nsbp;
+					</neq>
+				</td>
+				<td>&nbsp;</td>
+				<td width="30%" style="vertical-align:top;" >
+					<volist name="filelist" id="vo">
+						<?php
+							echo '<p>
+									<a href="__URL__/edit/file/'.$vo['epath'].'&theme/'.$theme.'">
+										'.str_replace($themepath.'/','',$vo['rpath']).'
+									</a>
+								</p>';
+						?>
+					</volist>
+				</td>
+			</tr>
+		</TABLE>
+	</FORM>
+	<script type="text/javascript">
+		<!--
+			var  w=$('#test1').css('width');
+			console.info(w);
+			CodeMirror.modeURL = "/Public/codemirror/mode/%N/%N.js";
+			var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+				lineNumbers: true,
+				theme 		: 'default'
+			});
+			var modarr={
+				'html':'htmlmixed',
+				'js':'javascript'
+			};
+			var mode = '{$fileinfo.extension}';
+			mode= modarr[mode] ? modarr[mode] : mode;
+			function change() {
+			   editor.setOption("mode", mode);
+			   CodeMirror.autoLoadMode(editor, mode);
+			}
+			$(function () {
+				change();
+				$('#select').change(function(){
+					var theme = $('#select option:selected').html();
+					editor.setOption("theme", theme);
+				});
+				$('.CodeMirror-scroll').css({
+					width:w,
+					overflow:'scroll'
+				});
+				$('.CodeMirror').css('height','600px');
+		    });
+		//-->
+	</script>
+<include file="Public:footer" />

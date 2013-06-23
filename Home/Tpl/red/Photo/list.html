@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        {$seoinfo}
+        <link href="../Public/css/common.css" rel="stylesheet" type="text/css">
+        <link href="__PUBLIC__/Js/artdialog/skins/default.css?4.1.4" rel="stylesheet">
+        <link href="__PUBLIC__/Js/lightbox/lightbox.css" rel="stylesheet">
+        <link href="../Public/css/list.css" rel="stylesheet">
+        <style type="text/css">
+        #gallery {margin-top: 20px;}
+        #gallery li{float:left;}
+        #gallery li a{width: 120px;height: 120px;display:block;padding: 10px;border: 1px solid #ccc;margin-right: 20px;margin-bottom: 20px;text-decoration: none;}
+        #gallery li a:hover{border: 1px solid #C7222F;}
+        #gallery li p{text-align: center;overflow: hidden;width: 120px;height: 25px;}
+        </style>
+    </head>
+    <body>
+    	<include file="Public:header" />
+                <div class="container">
+                    <div class="content clearfix">
+						<div class="main" >
+			                	<ul id="gallery">
+									<volist name="PhotoList" id="vo">
+			                    	<li>
+			                        	<a title="{$vo.title}" href="{$vo.img}">
+			                            	<img width="100" height="100" alt="" src="{$vo.thu_img}">
+			                            <p>{$vo.title}</p>
+                                        </a>
+			                        </li>
+									</volist>
+			                    </ul>
+							<p class="page" style="clear:both;">{$PhotoPage}</p>
+						</div>
+                        <div class="sidebar">
+                            <div class="sidebar_content">
+                                <h3 class="h_title">相册分类</h3>
+                                <ul class="list">
+									<volist name="PhotoCateList" id="PhotoCateVo">
+									<li><a href="Photo_index_cid_{$PhotoCateVo.id}.html">{$PhotoCateVo.title}</a></li>
+									</volist>
+                                </ul>
+                            </div>
+    					<include file="Public:slide" />
+    					</div>
+                    </div>
+                </div>
+    	<include file="Public:footer" />
+    	<script type="text/javascript" src="__PUBLIC__/Js/lightbox/lightbox.min.js"></script>
+    	<script type="text/javascript">
+	    	$(function() {
+				$('#gallery a').lightBox({fixedNavigation:true});
+			});
+    	</script>
+    </body>
+</html>

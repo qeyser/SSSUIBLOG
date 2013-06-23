@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>『{$Think.config.web_name}管理平台』By ThinkPHP {$Think.version}</title>
+<link href="../Public/css/top.css" rel="stylesheet">
+</head>
+<body>
+	<div class="top">
+		<h1 class="logo">{$Think.config.web_name} 管理平台</h1>
+		<ul class="nav">
+			<li>
+				<a href="#" onclick="jump(0,'','后台首页');">后台首页</a>
+			</li>
+			<volist name="nodeGroupList" id="tag">
+			<li><span><a href="#" onclick="jump({$i},'{$tag.id}','{$tag.title}');">{$tag.title}</a></span></li>
+			</volist>
+		</ul>
+		<ul class="admin">
+			<li>欢迎你,{$Think.session.nickname}！</li>
+			<li><a href="#" onclick="window.open('/');return false;">预览首页</a></li>
+			<li><a href="__URL__/password/" target="main" >修改密码</a></li>
+			<li><a href="?s=User/edit/id/{$Think.session.uid}" target="main">修改资料</a></li>
+			<li><a href="__URL__/logout/" target="top">退出</a></li>
+		</ul>
+	</div>
+
+<script>
+	function jump(n,id,title){
+		sethighlight(n);
+		parent.menu.location='__APP__/Public/menu/tag/'+id+'/title/'+title;
+		return false;
+	}
+	function sethighlight(n) {
+		var lis = document.getElementsByTagName('a');
+		for(var i = 0; i < lis.length; i++) {
+			lis[i].className = '';
+		}
+		lis[n].className = 'seleted';
+	}
+	sethighlight(0);
+</script>
+</body>
+</html>

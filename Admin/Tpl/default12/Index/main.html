@@ -1,0 +1,47 @@
+<include file="Public:header" />
+		<div class="inner">
+			<h1>欢迎使用{:C('WEB_NAME')}管理系统</h1>
+			<div class="onecolumn">
+				<div class="header">
+					<span>系统概要</span>
+				</div>
+				<br class="clear">
+				<div class="content">
+					<form id="form_data" name="form_data" action="" method="post">
+						<table class="list" cellpinserting="0" cellspacing="0" width="100%">
+								<tr>
+								<volist name="info" id="v">
+										<TD width="15%">{$key}</TD><TD width="35%">{$v}</TD>
+										<php> if ($i%2 ==0 ){
+											echo '</TR><TR class="row" >';
+										}</php>
+								</volist>
+								</tr>
+						</table>
+						<div id="chart_wrapper" class="chart_wrapper"></div>
+					</form>
+				</div>
+			</div>
+			<div class="onecolumn">
+				<div class="header">
+					<span>使用帮助</span>
+				</div>
+				<br class="clear">
+				<div class="content">
+					<form id="form_data" name="form_data" action="" method="post">
+						<table class="list" cellpinserting="0" cellspacing="0" width="100%">
+							<tr>
+								<TD>1.本系统的信息的录入除标题和正文之外其他的都不是必填的</TD>
+							</tr>
+							<tr>
+								<TD>2.排序的功能会影响前台显示的顺序</TD>
+							</tr>
+						</table>
+						<div id="chart_wrapper" class="chart_wrapper"></div>
+					</form>
+				</div>
+			</div>
+
+			<br class="clear">
+		</div>
+<include file="Public:footer" />

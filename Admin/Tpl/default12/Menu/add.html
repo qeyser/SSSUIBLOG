@@ -1,0 +1,53 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span class="">新增<present name="groupName">[{$groupName}]</present>菜单</span> <p>[ <A HREF="__URL__">返回列表</A> ]</p></div>
+		<br class="clear">
+		<div class="content">
+			<FORM METHOD=POST id="form1" >
+				<TABLE cellpinserting=3 cellspacing=3  style="margin-left:0;">
+					<TR>
+						<TD class="tRight" >标题：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire"  NAME="title" ></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >名称：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft"  NAME="name" ></TD>
+					</TR>
+					<TR>
+						<TD class="tRight" >链接：</TD>
+						<TD class="tLeft" ><INPUT TYPE="text" class="large bLeftRequire"  NAME="link" ></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">TARGET：</TD>
+						<TD class="tLeft"><SELECT class="small bLeft" NAME="target">
+						<option value=""></option>
+						<option value="_blank">BLANK</option>
+						<option value="_top">TOP</option>
+						<option value="_new">NEW</option>
+						</SELECT></TD>
+					</TR>
+					<TR>
+						<TD class="tRight">状态：</TD>
+						<TD class="tLeft"><SELECT class="small bLeft" NAME="status">
+						<option value="1">启用</option>
+						<option value="0">禁用</option>
+						</SELECT></TD>
+					</TR>
+					<TR>
+						<TD ></TD>
+						<TD class="center">
+							<INPUT TYPE="hidden" name="ajax" value="1">
+							<INPUT TYPE="hidden" name="level" value="{$level}">
+							<INPUT TYPE="hidden" name="pid" value="{$pid}">
+							<html:imageBtn style="imgbtndiv"  type="button" value="保 存" click="sendForm('form1','__URL__/insert/')" />
+							<INPUT TYPE="reset" class="submit  small shadow" value="清 空" >
+						</TD>
+					</TR>
+				</TABLE>
+			</FORM>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

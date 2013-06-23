@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		{$seoinfo}
+        <link href="../Public/css/common.css" rel="stylesheet" type="text/css">
+        <link href="__PUBLIC__/Js/artdialog/skins/default.css?4.1.4" rel="stylesheet">
+        <link href="../Public/css/read.css" rel="stylesheet">
+    	<link rel='stylesheet' href='Public/Js/prettify/src/prettify.css' type='text/css' />
+    </head>    
+    <body>
+    	<include file="Public:header" />
+                <div class="container">
+                    <div class="content clearfix">
+                        <div class="main">
+                            <div class="main_content">
+                                <h2 class="h_title">{$vo.title}</h2>
+                                <div class="text">{$vo.content|getContent}</div>
+                                <div class="link clearfix">
+									<neq name="pre.id">
+									<a rel="prev" href="{$pre.id}.html"><span class="meta-nav">上一篇：</span>{$pre.title}</a>
+									<else />
+									<a rel="prev" href="#"><span class="meta-nav">上一篇：</span>没有了</a>
+									</neq>
+									<neq name="next.id">
+									<a rel="next" href="{$next.id}.html"><span class="meta-nav">下一篇：</span>{$next.title}</a>
+									<else />
+									<a rel="next" href="#"><span class="meta-nav">下一篇：</span>没有了</a>
+									</neq>
+	                            </div>
+								
+								<!--这里放编辑器-->
+								<div class="CommentBox clearfix">
+								<if condition="$uid eq 3">					
+									<p><a href="javascript:minilogin();">请先登录</a></p>
+								<else />
+									<p>说点什么呢?</p>
+									<p><textarea name="content" id="CommentContent"></textarea></p>
+									<p>
+										<input class="submit left" type="button" id="CommentSubmit" value="提交评论" />
+										<span class="right" id="CommontTips">还可以输入 100 字</span>
+									</p>
+								</if>
+								</div>
+								<div class="CommentList">
+									<volist name="CommentList" id="CommentVo">
+									<?php 
+									$CommentVo['uid']=GUI($CommentVo['uid']);
+									?>
+									<div class="CommentPost">
+										<p class="user_info"><a href="#" class="user_name">{$CommentVo.uid.nickname}</a>留言于{$CommentVo.create_time|toDate='Y年m月d日'}</p>
+										<p class="leave_message_content">{$CommentVo.content}</p>
+									</div>
+									</volist>				
+								</div>
+								<!--分页-->
+								<div class="page clearfix">{$CommentPage}</div>
+                            </div>
+                        </div>
+                        <div class="sidebar">
+    					<include file="Public:slide" />
+    					</div>
+                    </div>
+                </div>
+    	<include file="Public:footer" />
+    	<script type="text/javascript" src="Public/Js/prettify/src/prettify.js"></script>
+		<script type="text/javascript">
+		    $('pre').attr('class',"prettyprint lang-php linenums");
+		    prettyPrint();
+			$(function(){
+				$('.happy').bind('click',function(){
+					var self=$(this);
+					var id=self.attr('href').replace('##','');
+					$.ajax({
+						url:'Jishantang-setgood-id-'+id+'.html',
+						dataType:'json',
+						success:function(msg){				
+							if(msg['status']=="1"){
+								self.unbind('click');
+								minimsg(msg['info']);
+								self.html(parseInt(self.html())+1);
+							}
+						}
+					});
+					self.click(function(){});
+				});
+				$('.sad').bind('click',function(){
+					var self=$(this);
+					var id=self.attr('href').replace('##','');
+					$.ajax({
+						url:'Jishantang-setbad-id-'+id+'.html',
+						dataType:'json',
+						success:function(msg){				
+							if(msg['status']=="1"){
+								self.unbind('click');
+								minimsg(msg['info']);
+								self.html(parseInt(self.html())+1);
+							}
+						}
+					});
+				});
+				$('#CommentContent').keydown(function(){
+					var content=$('#CommentContent').val();
+					var l=200-content.length;
+					if(l<0){
+						l=0;
+					}
+					$('#CommontTips').html('还可以输入 '+l+' 字!');
+				});
+				$('#CommentSubmit').click(function(){
+					var content=$('#CommentContent').val();
+					if (content.length>200 || content.length ==0){
+						$('#CommontTips').html('只能输入0-200个字符!');
+					}else{
+						$.ajax({
+						   type: "POST",
+						   url: "News_postcomment.html",
+						   data:"module=New&pid={$Think.get.id}&content="+content,
+						   dataType:'json',
+						   success: function(msg){
+								if(msg['status']=="1"){
+									location.reload();
+								}else{
+									minimsg(msg['info']);
+								}
+						   }
+						});
+					}
+				});
+			})
+		</script>
+    </body>
+</html>

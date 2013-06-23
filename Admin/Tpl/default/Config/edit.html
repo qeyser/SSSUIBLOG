@@ -1,0 +1,54 @@
+<include file="Public:header" />
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span><eq name="ACTION_NAME" value='add'>新增<else />编辑</eq>配置</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR>
+					<TD class="tRight" width="20%">变 量：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="large bLeftRequire" NAME="name" value="{$vo.name}"  dataType="/^\S+$/i" nullmsg="配置名不能为空,且不能含有空格" errormsg="配置名不能为空,且不能含有空格"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >名 称：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="large bLeft"  NAME="title" value="{$vo.title}"></TD>
+				</TR>
+				<TR>
+					<TD class="tRight tTop">配 置：</TD>
+					<TD class="tLeft">
+					<TEXTAREA style="overflow:auto" class="large " NAME="value" ROWS="5" COLS="35">{$vo.value}</TEXTAREA>
+					</TD>
+				</TR>
+				<TR>
+					<TD class="tRight">类 型：</TD> 
+					<TD class="tLeft"><SELECT class="medium bLeft" NAME="type">
+					<option <eq name="vo.type" value="0" >selected</eq> value="0">字符型</option>
+					<option <eq name="vo.type" value="1" >selected</eq> value="1">数字型</option>
+					<option <eq name="vo.type" value="2" >selected</eq> value="2">布尔型</option>
+					<option <eq name="vo.type" value="3" >selected</eq> value="3">文本型</option>
+					<option <eq name="vo.type" value="4" >selected</eq> value="4">枚举型</option>
+					</SELECT></TD>
+				</TR>
+				<TR>
+					<TD class="tRight tTop">参 数：</TD>
+					<TD class="tLeft">布尔型、枚举型请输入参数（用,分割多个参数 用:分割值和显示）<BR><TEXTAREA class="bLeft large" NAME="extra" ROWS="5" COLS="35">{$vo.extra}</TEXTAREA><BR>布尔型采用两个参数，前面的表示否</TD>
+				</TR>
+				<TR>
+					<TD class="tRight tTop">备  注：</TD>
+					<TD class="tLeft"><TEXTAREA class="bLeft large" NAME="remark" ROWS="5" COLS="35">{$vo.remark}</TEXTAREA></TD>
+				</TR>
+
+				<TR>
+					<TD>&nbsp;</TD>
+					<TD>
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<input type="submit" class="submit" value="确 认"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

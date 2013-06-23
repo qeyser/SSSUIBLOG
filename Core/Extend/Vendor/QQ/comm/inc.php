@@ -1,0 +1,1 @@
+{"appid":"205061","appkey":"ed229283b235e276e7cc13d5d2693c47","callback":"http://www.sssui.com/Qq_callback.html","scope":"get_user_info,add_weibo,add_t,get_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}

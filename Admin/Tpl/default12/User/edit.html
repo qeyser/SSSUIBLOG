@@ -1,0 +1,176 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<script src="__PUBLIC__/Js/PCASClass.js" ></script>
+<script src="__PUBLIC__/Js/My97DatePicker/WdatePicker.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function resetPwd(){
+	var pass	 =	 document.getElementById('resetPwd').value;
+	//alert(pass);
+	ThinkAjax.send('__URL__/resetPwd/','ajax=1&id={$vo.id}&password='+encodeURIComponent(pass));
+}
+//-->
+</SCRIPT>
+<div id="main" class="inner" >
+	<div class="onecolumn">
+		<div class="header"><span><eq name="ACTION_NAME" value="add">新增<else />编辑</eq>帐号</span>[ <A HREF="__URL__">返回列表</A> ]</div>
+		<br class="clear">
+		<div class="content">
+			<TABLE cellpinserting=3 cellspacing=3 width="100%">
+			<neq name="ACTION_NAME" value="add">
+				<tr>
+					<TD class="tRight">重置密码：</TD>
+					<TD class="tLeft" >
+						<INPUT TYPE="text" NAME="resetPwd" id="resetPwd" > 
+						<html:imageBtn style="imgbtndiv" type="button" value="重置密码" click="resetPwd()" />
+					</TD>
+				</TR>
+			</neq>
+				<tr>
+					<TD class="tRight" colspan="2"><HR></TD>
+				</TR>
+			<FORM METHOD=POST id="form1" action="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>">
+				<tr>
+					<TD class="tRight" >用户名：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeftRequire" NAME="account" value="{$vo.account}"></TD>
+				</TR>
+				<eq name="ACTION_NAME" value="add">
+				<TR>
+					<TD class="tRight" >密码：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="medium bLeft" NAME="password" value=""></TD>
+				</TR>
+				</eq>
+				<tr>
+					<td class="tRight tTop">昵称：</td>
+					<td class="tLeft"><input type="text" name="nickname" id="nickname" value="{$vo.nickname}" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+				<tr>
+					<td class="tRight tTop">头像：</td>
+					<td class="tLeft"><img src="{$vo.avatar}" /></td>
+					<td class="tLeft"></td>
+				</tr>
+				<tr>
+					<td class="tRight tTop">邮箱：</td>
+					<td class="tLeft"><input type="text" name="email" id="email" value="{$vo.email}" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">性别</td>
+					<td class="tLeft"><input type="radio" name="sex" value="1" <eq name="vo['sex']" value="1">checked</eq> />男<input type="radio" name="sex" value="2" <eq name="vo['sex']" value="2">checked</eq>/>女</td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">生日：</td>
+					<td class="tLeft"><input type="text" name="birthday" id="birthday" value="{$vo.birthday}" onClick="WdatePicker()" readonly="true" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">身份证：</td>
+					<td class="tLeft"><input type="text" name="cardnum" id="cardnum" value="{$vo.cardnum}" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">手机：</td>
+					<td class="tLeft"><input type="text" name="mobi" id="mobi" value="{$vo.mobi}" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">电话：</td>
+					<td class="tLeft"><input type="text" name="tel" id="tel" value="{$vo.tel}" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">qq：</td>
+					<td class="tLeft"><input type="text" name="qq" id="qq" value="{$vo.qq}" class="medium bLeft"/></td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">地址：</td>
+					<td class="tLeft">
+						<select name="ap" id="ap"></select>
+						<select name="ac" id="ac"></select>
+						<select name="aa" id="aa"></select>
+						<input type="text" name="addr" id="addr" value="{$vo.addr}" class="medium bLeft" />
+						<script type="text/javascript">new PCAS('ap','ac','aa',"{$vo.ap}","{$vo.ac}","{$vo.aa}");</script>
+					</td>
+					<td class="tLeft"></td>
+				</tr>
+				<tr>
+					<td class="tRight tTop">个人介绍：</td>
+					<td class="tLeft"><TEXTAREA type="text" name="aboutme" style="width: 386px; height: 166px;" class="medium bLeft"/>{$vo.aboutme}</TEXTAREA></td>
+					<td class="tLeft"></td>
+				</tr>
+
+
+			<neq name="ACTION_NAME" value="add">
+				<tr>
+					<td class="tRight tTop">最后登录时间：</td>
+					<td class="tLeft">{$vo.last_login_time}</td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">最后登录IP：</td>
+					<td class="tLeft">{$vo.last_login_ip}</td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">登录次数：</td>
+					<td class="tLeft">{$vo.login_count}</td>
+					<td class="tLeft"></td>
+				</tr>
+
+				<tr>
+					<td class="tRight tTop">注册时间：</td>
+					<td class="tLeft">{$vo.create_time}</td>
+					<td class="tLeft"></td>
+				</tr>
+				<tr>
+					<td class="tRight tTop">更新时间：</td>
+					<td class="tLeft">{$vo.update_time}</td>
+					<td class="tLeft"></td>
+				</tr>
+				<tr>
+					<td class="tRight tTop">邮箱认证：</td>
+					<td class="tLeft"><eq name="vo.email_auth" value="1">已认证<else />未认证</eq></td>
+					<td class="tLeft"></td>
+				</tr>
+				</neq>
+				<tr>
+					<TD class="tRight tTop">备  注：</TD>
+					<TD class="tLeft"><TEXTAREA class="large bLeft"  NAME="remark" style="width: 386px; height: 166px;" >{$vo.remark}</TEXTAREA></TD>
+					<td class="tLeft"></td>
+				</TR>
+				<tr>
+					<TD class="tRight">状态：</TD>
+					<TD class="tLeft"><SELECT class="small bLeft"  NAME="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+					</SELECT></TD>
+					<td class="tLeft"></td>
+				</TR>
+				<tr>
+					<TD ></TD>
+					<TD class="center">
+						<eq name="ACTION_NAME" value="edit"><INPUT TYPE="hidden" name="id" value="{$vo.id}" ></eq>
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<html:imageBtn style="imgbtndiv"  type="submit" value="保 存"  />
+						<html:imageBtn style="imgbtndiv" TYPE="reset"  value="重 置" />
+					</TD>
+					<td class="tLeft"></td>
+				</TR>
+			</FORM>
+			</TABLE>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

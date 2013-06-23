@@ -1,0 +1,184 @@
+@charset "UTF-8";
+@import url(../css/public.css);
+/*main*/
+.main {width: 100%;}
+.main .bread_nav {
+	padding: 9px 0;
+	margin:0 15px;
+	border-bottom: 1px solid #ddd;
+	color: #666;
+}
+.main .bread_nav a ,
+.main .bread_nav span {
+	font-size: 0.875em;
+	color: #666;
+}
+.main .editing_area {
+	margin: 0 15px;
+}
+.Abstruct{overflow: hidden;display:inline-block;width:100%;}
+.btn {float: left;margin-right: 10px;border-radius: 3px 3px 3px 3px;}
+.btn input {
+	height: 32px;
+    padding: 0 12px 0 41px;
+    *padding: 0 0 0 31px;
+	cursor: pointer;
+	border: none;
+	color: #FFFFFF;
+	font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+.btn.add {background: #2dcc70;border-bottom: 2px solid #00a128;}
+.btn.add:hover {background: #5bdc97;}
+.btn.add input {background: url(../images/add.png) 19px 8px no-repeat;}
+.btn.search {background: #1a8dff;border-bottom: 2px solid #0059b3;}
+.btn.search input {background: url(../images/find.png) 19px 8px no-repeat;}
+.btn.search:hover {background: #4ca6ff;}
+.btn.sort {background: #a250be;border-bottom: 2px solid #45007d;}
+.btn.sort:hover {background: #bb76d0;}
+.btn.sort input {background: url(../images/board_pin.png) 19px 8px no-repeat;}
+.btn.delete {background: #fe4b46;border-bottom: 2px solid #b30000;}
+.btn.delete:hover {background: #fe716c;}
+.btn.delete input {background: url(../images/delete.png) 19px 8px no-repeat;}
+.btn.cache {background: #35c7ff;border-bottom: 2px solid #008fff;}
+.btn.cache:hover {background: #5bd7ff;}
+.btn.cache input {background: url(../images/clean.png) 19px 8px no-repeat;}
+.btn.adv1 {background: #ff7d32;border-bottom: 2px solid #f50000;}
+.btn.adv1:hover {background: #ff9d58;}
+.btn.adv1 input {background: url(../images/advanced.png) 19px 8px no-repeat;}
+.btn.adv2 {background: #ff7d32;border-bottom: 2px solid #f50000;}
+.btn.adv2:hover {background: #ff9d58;}
+.btn.adv2 input {background: url(../images/hide.png) 19px 8px no-repeat;}
+
+
+.adv {
+	float: left;
+	width: 100%;
+	margin-top: 20px;
+	}
+.adv label {
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	font-size: 0.875em;
+	color: #666;
+}
+.m {
+	float: left;
+	margin: 4px 10px 0 0;
+}
+
+#SearchC{display: none;}
+#SearchC table {float: left;margin-bottom: 20px;}
+#SearchC td {padding: 20px 20px 0 0;vertical-align: middle;}
+#SearchC input {height: 17px;position: relative;top: 1px\9;*top: 0;left: 0;}
+
+/*list*/
+.main .list {
+	width: 98%;
+	margin: 20px 15px 10px;
+	color: #333;
+	table-layout: fixed;
+}
+.main .list caption {
+	color: #114E85;
+	font-size: 1.25em;
+	font-weight: bold;
+	text-align: left;
+}
+.main .list th {
+	padding: 6px 20px;
+	border-bottom: 2px solid #dbdbdb;
+	border-top:1px solid #e5e5e5;
+	background: #f0f0f0;
+	text-align: left;
+}
+.main .list .row:hover{background: #f7f7f7;}
+.main .list th a {
+	color: #4d4d4d;
+} 
+.main .list td {
+	padding: 10px 20px;
+	border-bottom: 1px solid #E5E5E5;
+	font-size: 0.875em;
+}
+.main .list td a {
+	color: #114E85;
+}
+
+/*editing_list*/
+.editing_list{width: 100%;}
+.submit {
+	background: #145A98;
+    border-bottom: 1px solid #113B5C;
+    border-radius: 3px 3px 3px 3px;
+    border-top: 1px solid #317EB1;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    height: 30px;
+    width: 150px;
+}
+.submit:hover {background: #1973c2}
+.main .editing_list td {padding-top: 20px;}
+.main .editing_list .submit {cursor: pointer;}
+
+/*page*/
+.page{
+	text-align:right;
+	padding:20px 20px 2px;
+	color: #666;
+	font-size: 0.875em;
+}
+.page a{
+	padding: 3px 4px;
+	background:#fff;
+	border:1px solid #e0e0e0;
+	color: #666;
+}
+.page a:hover{
+	color: #114E85;
+	text-decoration: none;
+	border-color:#114E85;}
+.current {
+	padding: 3px 10px;
+	color: #fff;
+	border:1px solid #114E85;
+	background:#114E85;}
+
+/* 表单验证必须的*/
+.Validform_checktip{
+	margin-left:8px;
+	line-height:20px;
+	height:20px;
+	overflow:hidden;
+	color:#999;
+	font-size:12px;
+}
+.Validform_right{
+	color:#71b83d;
+	padding-left:20px;
+	background:url(../images/right.png) no-repeat left center;
+}
+.Validform_wrong{
+	color:red;
+	padding-left:20px;
+	white-space:nowrap;
+	background:url(../images/error.png) no-repeat left center;
+}
+.Validform_loading{
+	padding-left:20px;
+	background:url(../images/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+	background-color:#ffe7e7;
+}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#999;
+background: -moz-linear-gradient(top, #999, #666 100%); background: -webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#666)); filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666');}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #bbb; border-top:none; text-align:left;}

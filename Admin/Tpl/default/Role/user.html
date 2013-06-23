@@ -1,0 +1,29 @@
+<include file="Public:header" />
+<style>
+.multiSelect{width:290px;}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function goType(type){
+	window.location = '?type='+type;
+}
+function edituser(id){
+	window.location='?s=User/edit/id/'+id;
+}
+//-->
+</SCRIPT>
+		<div class="bread_nav"><span>组用户列表</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<div class="editing_area clearfix">
+			<form id="SearchA" name="SearchForm" class="adv" method="POST">
+				<html:select name="groupId" change="location.href = '__URL__/user/id/'+this.options[this.selectedIndex].value;" first="选择组" style="medium" options="groupList" selected="selectGroupId" />
+			</form>
+		</div>
+		<FORM METHOD="POST" id="form1" action="__URL__/setUser/">
+			<html:list id="checkList" style="list" name="action" checkbox="true" action="false" datasource="groupUserList" show="id:编号|10%,account:账号:edituser,nickname:昵称,money:银两,gongde:功德,create_time|toDate:注册时间,last_login_time|toDate:最后登陆" actionlist="id|app|授权,edit:编辑:id,del:删除:id" />
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

@@ -1,0 +1,23 @@
+<include file="Public:header" />
+<style type="text/css">
+	.menuli{margin-bottom: 50px;}
+	.menuli li {list-style: none;float: left; width: 100px;}
+</style>
+	<div class="inner">
+		<h1>欢迎使用{:C('WEB_NAME')}管理系统</h1>
+		<div class="onecolumn">
+			<div class="header">
+				<span>菜单搜索</span>
+			</div>
+			<br class="clear">
+			<div class="content">
+				<ul class="menuli">
+					<volist name="list" id="vo" >
+						<li><a href="__APP__/{$vo.name}">{$vo.title}</a></li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+		<br class="clear">
+	</div>
+<include file="Public:footer" />

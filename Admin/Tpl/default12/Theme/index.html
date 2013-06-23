@@ -1,0 +1,50 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<style type="text/css">
+	.theme{float: left;width: 200px;height: 250px;border: solid 5px #F7F7F7;margin-left: 10px;padding: 10px;}
+	.default,.curr{border-color: #ccc;}
+	.theme p{text-align: center;}
+	.theme img{width: 180px;height:200px;}
+</style>
+<div class="inner">
+	<h1>主题管理</h1> 
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD=POST id="form1" name="form1" action="__URL__/update">
+			<div class="list" >
+				<volist name="list" id="vo">
+					<div class="theme <eq name="curr_theme" value="$key"> default</eq>" rel="{$key}">
+						<p><img src="{$vo}/preview.png"></p>
+						<p>{$key}</p>
+						<p><a href="__URL__/edit/theme/{$key}">编辑</a></p>
+					</div>
+				</volist>
+			</div>
+		</FORM>
+	</div>
+</div>
+
+<include file="Public:footer" />
+<script type="text/javascript">
+<!--
+	$(function () {
+		$('.theme').hover(
+			function(){ $(this).addClass('curr');},
+			function(){ $(this).removeClass('curr');}
+		);
+		$('.theme').click(function(){
+			$.ajax({
+				url:'?s=Theme/setTheme/theme/'+$(this).attr('rel'),
+				dataType:'json',
+				success:function(data){
+					if (data.status==1){
+						window.reload();
+					}else{
+
+					}
+				}
+			});
+		});
+    });
+//-->
+</script>

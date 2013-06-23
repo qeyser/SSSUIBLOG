@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/*公用样式*/
+html , body { -webkit-text-size-adjust:none;}
+html {font-size: 100%;}
+body {font-size: 1em;}
+body, h1, h2, h3, h4, h5, h6, hr, p,blockquote,dl, dt, dd, ul, ol, li,form, fieldset, legend, button, input, textarea,th, td, img {border:none;margin: 0;padding: 0;}
+body,button, input, select, textarea {font-family:"宋体",tahoma,sans-serif;line-height:1.5;}
+em{font-style:normal;}
+ul, ol ,dl { list-style: none; }
+a { text-decoration: none;}
+a:hover {text-decoration: underline;}
+img{ border:0px;}
+table { border-collapse: collapse; border-spacing: 0; }
+.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+.clearfix { *zoom:1;}
+.left {float: left;}
+.right {float: right;}
+.no_outline {
+	outline: none;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+.green {color: #009914;}
+.red {color: red;}
+.huge{width:350px}
+.large{width:280px}
+.medium{width:168px}
+.small{width:84px}
+.mini{width:35px}
+
+.tLeft{text-align:left}
+.tRight{text-align:right}
+.tCenter{text-align:center}
+.tTop{vertical-align:top}
+.tBottom{vertical-align:bottom}
+.tMiddle{vertical-align:middle}
+
+.fLeft{float:left}
+.fRig{float:right}
+.fNone{float:none}
+.bLeft{border-left-width:2px; border-left-color:gray}
+.bLeftRequire{border-left-width:2px; border-left-color:red}
+.bRight{border-right-width:2px; border-color:gray}
+.bBottom{border-bottom-width:2px; border-color:gray}
+.bTop{border-top-width:2px; border-color:gray}
+input, textarea, select {
+    background: #fafafa;
+    padding: 3px;
+    border: 1px solid;
+	border-color: #999 #ccc #E5E5E5;
+}
+select {height: 25px;position: relative;*top: 5px;_top: 0;left: 0;}
+.submit {}

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>『{$Think.config.web_name}管理平台』By ThinkPHP {$Think.version}</title>
+<link href="../Public/css/menu.css" rel="stylesheet">
+<base target="main" />
+</head>
+<body>
+	<ul class="menu">
+		<volist name="menu" id="item">
+            <eq name="item['group_id']" value="$menuTag">
+                <neq name="item['name']|strtolower" value="public" >
+                    <neq name="item['name']|strtolower" value="index" >
+                        <eq name="item['access']" value="1" >
+                            <li><a href="__APP__/{$item['name']}/index/" id="{$key}" onclick="sethighlight(this);" class="">{$item['title']}</a></li>
+                        </eq>
+                    </neq>
+                </neq>
+            </eq>
+        </volist>
+	</ul>	
+    <script language="JavaScript">
+        <!--
+		function sethighlight(o) {
+			var lis = document.getElementsByTagName('a');
+			for(var i = 0; i < lis.length; i++) {
+				lis[i].className = '';
+			}
+			o.className = 'seleted';
+		}
+        function refreshMainFrame(url){
+            parent.main.document.location = url;
+        }
+        if (document.getElementsByTagName('a')[0]){
+            refreshMainFrame(document.getElementsByTagName('a')[0].href);
+        }else{
+        	refreshMainFrame('__APP__/Public/main/');
+        }
+        //-->
+    </script>
+</body>
+</html>

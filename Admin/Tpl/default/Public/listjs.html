@@ -1,0 +1,35 @@
+<script type="text/javascript">
+$(function(){
+	$('.row td:gt(0)').attr('nowrap','');
+	$('.row th:gt(0)').attr('nowrap','');
+	$('.row:gt(0)').click(function(e){
+		if(e.target.name!='key'){
+			// && !e.target.href
+			var xx=$(this).find(':checkbox');
+			xx.attr('checked',!xx.attr('checked'));
+			changrowbgcolor();
+		}
+	});
+	$('.Abstruct').each(function(){
+		if ($(this).attr('type')=='img'){
+			var src=$(this).html();
+			$(this).click(function(){
+				$.dialog({ 
+					title:'查看图片',
+					content: src+'<br><img src="'+src+'" />'
+				}); 
+			});
+		}else{
+			var src=$(this).html();
+			$(this).click(function(){
+				$.dialog({ 
+					title:'查看详细',
+					content: eval(src)
+				}); 
+			});
+		}
+		$(this).attr('title',$(this).html());
+	});
+
+})
+</script>

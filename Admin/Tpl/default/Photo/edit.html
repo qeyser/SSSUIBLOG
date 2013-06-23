@@ -1,0 +1,65 @@
+<include file="Public:header" />
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span>上传相片</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR>  
+					<TD width="100%">
+						分类：<html:select options="cate" id="cate" change="window.location='__URL__/index/cid/'+this.value" />
+					</TD> 
+				</TR>
+				<TR>  
+					<TD width="100%">
+						<div id="flashcontent"></div>
+					</TD> 
+				</TR>
+				<TR>
+					<TD>&nbsp;</TD>
+					<TD>
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<input class="submit"  id="start" type="button" onclick="upload()" value="上 传"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+			$(function(){
+				var cid={$Think.get.cid|default=157};
+				var w=800;
+				var h=500;
+				var uploadUrl='__URL__/upload';
+				var gridWidth=115;
+				var gridHeight=120;
+				var picWidth=100;
+				var picHeight=100;
+				var uploadDataFieldName='picdata';
+				var picDescFieldName='pictitle';
+				var compressLength=1000;			//能接受的最大边长，超过该值Flash会自动等比压缩
+				var compressSide=0;                 //等比压缩的基准，0为按照最长边，1为按照宽度，2为按照高度
+				var html='<object width="'+w+'" height="'+h+'" align="middle" id="flash" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">'+
+			        '<param value="window" name="wmode">'+
+			        '<param value="Public/ueditor/dialogs/image/imageUploader.swf" name="movie">'+
+			        '<param value="width='+w+'&amp;height='+h+'&amp;gridWidth='+gridWidth+'&amp;gridHeight='+gridHeight+'&amp;picWidth='+picWidth+'&amp;picHeight='+picHeight+'&amp;uploadDataFieldName='+uploadDataFieldName+'&amp;picDescFieldName='+picDescFieldName+'&amp;maxSize=20&amp;compressSize=1&amp;maxNum=320&amp;backgroundUrl=&amp;listBackgroundUrl=&amp;buttonUrl=&amp;compressSide='+compressSide+'&amp;compressLength='+compressLength+'&amp;url='+uploadUrl+'&amp;ext=%7B%22cid%22%3A'+cid+'%7D&amp;fileType=%7B%22description%22%3A%22%E5%9B%BE%E7%89%87%22%2C%20%22extension%22%3A%22*.gif%3B*.jpeg%3B*.png%3B*.jpg%22%7D" name="flashvars">'+
+			        '<embed width="'+w+'" height="'+h+'" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="flash" src="Public/ueditor/dialogs/image/imageUploader.swf" flashvars="width='+w+'&amp;height='+h+'&amp;gridWidth='+gridWidth+'&amp;gridHeight='+gridHeight+'&amp;picWidth='+picWidth+'&amp;picHeight='+picHeight+'&amp;uploadDataFieldName='+uploadDataFieldName+'&amp;picDescFieldName='+picDescFieldName+'&amp;maxSize=20&amp;compressSize=1&amp;maxNum=320&amp;backgroundUrl=&amp;listBackgroundUrl=&amp;buttonUrl=&amp;compressSide='+compressSide+'&amp;compressLength='+compressLength+'&amp;url='+uploadUrl+'&amp;ext=%7B%22cid%22%3A'+cid+'%7D&amp;fileType=%7B%22description%22%3A%22%E5%9B%BE%E7%89%87%22%2C%20%22extension%22%3A%22*.gif%3B*.jpeg%3B*.png%3B*.jpg%22%7D" ver="10.0.0" wmode="window" errormessage="Flash插件初始化错误，请更新您的flashplayer版本！">';
+			        $('#flashcontent').html(html);
+			});
+			function getmovie(_mn) {
+			    if (navigator.appName.indexOf("Microsoft") != -1) {
+			        return window[_mn];
+			    }else{
+			        return document[_mn];
+			    }
+			}    
+			function upload() {
+			    var cid=1;
+				if(cid==""){
+			  		alert("{:L('请选择相册,或选择创建新相册！')}");
+			  		return false;
+			  	}else{
+			    	getmovie('flash').upload();
+			    	document.getElementById("start").style.display = "none";
+				}
+			}
+		</script>
+<include file="Public:footer" />

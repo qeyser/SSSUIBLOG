@@ -1,0 +1,54 @@
+<include file="Public:header" />
+		<script type="text/javascript" src="../Public/js/validform.min.js"></script>
+		<div class="bread_nav"><span><eq name="ACTION_NAME" value='add'>新增<else />编辑</eq>广告</span> [ <A HREF="__URL__">返回列表</A> ]</div>
+		<FORM METHOD="POST" name="login" ACTION="__URL__/<eq name="ACTION_NAME" value="add">insert<else />update</eq>" id="form1">
+			<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+				<TR>  
+					<TD class="tRight" width="15%">分   类：</TD> 
+					<TD class="tLeft" >	<html:select name="cid" options="cate" selected="vo['cid']" /></TD>
+				</TR>
+				<TR>
+					<TD class="tRight">名 称：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="title" value="{$vo.title}" datatype="*" nullmsg="" errormsg=""></TD>
+				</TR>
+				<TR>
+					<TD class="tRight" >格  式：</TD>
+					<TD class="tLeft" ><html:select name="format" options="format"  selected="vo['format']"/></TD>
+				</TR>
+				<TR>  
+					<TD class="tRight">文  件：</TD> 
+					<TD class="tLeft" ><INPUT TYPE="file" name="url" class="file huge" ></TD>
+				</TR>
+				<TR>
+					<TD class="tRight">链  接：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="link" value="{$vo.link}" datatype="*" nullmsg="" errormsg=""></TD>
+				</TR>
+				<TR> 
+					<TD class="tRight tTop">内 容：</TD>
+					<TD class="tLeft"><html:editor type="BAIDU" NAME="content" width="900" style="width:900px; height:auto;" >{$vo.content}</html:editor></TD> 
+				</TR>  
+				<TR>
+					<TD class="tRight">排  序：</TD>
+					<TD class="tLeft" ><INPUT TYPE="text" class="huge bLeftRequire" NAME="sortId" value="{$vo.sortId}"></TD>
+				</TR>        
+				<TR>
+					<TD class="tRight">状态：</TD>
+					<TD class="tLeft"><html:select name="status" options="zt"  selected="vo['status']" /></TD>
+				</TR>
+
+				<TR>
+					<TD class="tRight">&nbsp;</TD>
+					<TD>
+						<input type="hidden" name="id" value="{$vo.id}">
+						<INPUT TYPE="hidden" name="jumpurl" value="{$Think.server.HTTP_REFERER}">
+						<input type="submit" class="submit" value="确 认"/>
+					</TD>
+				</TR>
+			</TABLE>
+		</FORM>
+		<script type="text/javascript">
+		$(function(){
+			$('#form1').Validform({tiptype:3});
+		})
+		</script>
+<include file="Public:footer" />

@@ -1,0 +1,24 @@
+<include file="Public:header" />
+		<div class="bread_nav">
+			<span>会员反馈</span>
+		</div>
+		<div class="editing_area clearfix">
+				<form id="SearchA" name="SearchForm" class="adv" method="POST">
+					<html:imageBtn name="add_btn" value="新增" click="add();" style="add btn" />
+					<html:imageBtn name="delete_btn" value="删除" click="del();" style="delete btn" />
+					<html:imageBtn name="cache_btn" value="缓存" click="cache();" style="cache btn" />
+					<html:imageBtn name="sort_btn" value="排序" click="sort();" style="sort btn" />
+					<div class="clearfix">
+						<span class="m">
+							反馈人查询:<input type="text" class="medium" name="account" />
+						</span>
+						<html:imageBtn value="查询" name="search_btn" type="submit" style="search btn" />
+					<html:imageBtn name="sort_btn" value="高级" click="adv(this);" style="adv1 btn" />			
+					</div>
+					<div id="SearchC"></div>
+				</form>
+		</div>
+		<html:list id="checkList" style="list" name="action" checkbox="true" action="true" datasource="list" show="id:编号|5%,uid|GUI='account':反馈人,email:邮箱,tel:电话,create_time|toDate='Y-m-d H#i':时间,status|SF='model=&field=&value=&str0=启用&str1=禁用&id='.$action['id']:状态" actionlist="edit:查看:id,del:删除:id" />
+		<div class="page">{$page}</div>
+<include file="Public:listjs" />
+<include file="Public:footer" />

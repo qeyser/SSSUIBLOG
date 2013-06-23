@@ -1,0 +1,63 @@
+            <!--这是脚部-->
+            <div class="footer">
+                <ul>
+                    <li><a href="singlepage_1.html" target="_blank">关于我们</a></li>
+                    |
+                    <li><a href="Feedback.html" target="_blank">给我留言</a></li>
+                    |
+                    <li><a href="singlepage_1.html" target="_blank">关于我们</a></li>
+                    |
+                    <li><a href="singlepage_1.html" target="_blank">关于我们</a></li>
+                    |
+                    <li><a href="singlepage_1.html" target="_blank">关于我们</a></li>
+                    |
+                    <li><a href="singlepage_1.html" target="_blank">关于我们</a></li>
+                </ul>
+                <ul>
+                    <li>
+                        <br>
+                        <a href="/">{:C('WEB_NAME')}</a>
+                        <span class="copy">© {:date('Y')}</span>
+                        <a href="/">{:C('WEB_URL')}</a>
+                        &nbsp;&nbsp;
+                        <a href="http://www.miibeian.gov.cn/" target="_blank">粤ICP备09098401号-6</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <import file="Js.jquery" />
+        <import file="Js.artDialog.jquery#artDialog#min" />
+        <import file="Public.js.common" basepath="/Home/Tpl/red"/>
+        <script type="text/javascript">
+            function Login() {
+                window.location = "Login.html";
+            }
+            function Register() {
+                window.location = "register.html";
+            }
+            function addfavorite() {
+                if (document.all) {
+                    window.external.addFavorite('{:C('WEB_URL')}', '{:C('WEB_NAME')}');
+                } else if (window.sidebar) {
+                    window.sidebar.addPanel('{:C('WEB_NAME')}', '{:C('WEB_URL')}', "");
+                }
+            }            
+            function search() {
+                var kw = $('#kw').val();
+                window.location = "News_search_kw_" + kw + ".html";
+            }
+            $(function() {
+                $('#login1').toggle(function() {
+                    $('#login2').show();
+                },
+                function() {
+                    $('#login2').hide();
+                });
+                $('.nav').hover(function() {
+                    $('.cnav').show();
+                },
+                function() {
+                    $('.cnav').hide();
+                });
+            });
+        </script>

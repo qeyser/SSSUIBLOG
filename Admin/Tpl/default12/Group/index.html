@@ -1,0 +1,26 @@
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="inner">
+	<h1>分组列表  </h1> 
+	<form action="__URL__" METHOD="POST" name="search" >
+		<p>
+			<html:imageBtn style="imgbtndiv"  type="button" name="insert" value="新增" click="add()"  />
+			<html:imageBtn style="imgbtndiv"  type="button" name="delete" value="删除" click="del()"  />
+			<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="缓存" click="cache()"  />
+			<!--<html:imageBtn style="imgbtndiv"  type="button" name="sort" value="排序" click="paixu()"  />-->
+			<span class="key">标题:<input type="text" name="title" value="" /></span>
+			<html:imageBtn type="submit" name="search" value="查询" style="imgbtndiv" />
+			<!--<html:imageBtn name="adv" value="高级" id="showText" click="showHideSearch()" style="imgbtndiv" />-->
+		</p>
+		<div class="chaxun" id="searchM"></div>
+	</form>
+	<br class="clear">
+	<div class="content">
+		<FORM METHOD=POST name="search" ACTION="" class="form_data">
+			<html:list id="checkList" name="group" style="list" checkbox="true" action="true" datasource="list" show="id:编号|10%,name:名称:edit,title:标题,sort:排序,status|SF='id='.$action['id'].'&model=&value=&str1=禁用&str0=启用':状态" actionlist="del:删除" /> 
+		</form>
+		<div class="page">{$page}</div>
+	</div>
+</div>
+
+<include file="Public:footer" />

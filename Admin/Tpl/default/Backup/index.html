@@ -1,0 +1,84 @@
+<include file="Public:header" />
+<script type="text/javascript">
+function beifen(){
+	$('#huanyuan').hide();
+	$('#beifen').show();
+}
+function huanyuan(){
+	$('#beifen').hide();
+	$('#huanyuan').show();
+}
+</script>
+<style type="text/css">
+.list{margin-top: 5px;}
+.list li {list-style: none;display: inline-block;margin-left: 10px;width: 200px;}
+label{cursor: pointer;}
+.form{
+	border-top:1px solid #CCCCCC;
+	padding-top: 10px;
+}
+</style>
+		<div class="bread_nav">
+			<span>备份还原</span>
+		</div>
+		<div class="editing_area clearfix">
+				<form id="SearchA" name="SearchForm" class="adv" method="POST" >
+					<html:imageBtn style="sort btn"  type="button" name="insert" value="备份" click="beifen()"  />
+					<html:imageBtn style="sort btn"  type="button" name="delete" value="还原" click="huanyuan()"  />
+				</form>
+		</div>
+		<TABLE class="editing_list" cellpadding="0" cellspacing="0" >
+		<TR>
+			<TD>
+				<div id="beifen">
+					<h1>备份</h1>
+					<FORM METHOD="POST" class="form" name="form1" action="__URL__/reserved">
+						<p>
+							<label><input type="checkbox" value="send" name="is_email" />备份完成后发送到邮箱</label>
+							<input type="text" name="email" value="{:C('WEB_MAIL')}" />
+						</p>
+						<p>
+							<label><input type="checkbox" value="download" name="is_download" />备份完成后立刻下载到本地</label>
+						</p>
+					<ul class="list">
+						<volist name="dblist" id="vo" >
+						<li>
+							<input type="checkbox" value="{$vo}" name="tobackup[]" id="tobackup{$i}" checked />
+							<label for="tobackup{$i}">{$vo}</label>
+						</li>
+						</volist>
+					</ul>
+					<br>
+						<p><input type="submit" name="backup" class="submit" value="开始备份" /></p>
+					</FORM>
+				</div>
+			</TD>
+			<TD>
+				<div id="huanyuan" style="display:none;">
+					<h1>还原</h1>
+					<br>
+					<FORM METHOD="POST" name="form2" action="__URL__/restore"  class="form">
+						<?php
+							foreach(glob('./BACKUP/*') as $v){
+								if(is_dir($v)){
+									$backlist[]= $v;
+									//str_replace('_',':',str_replace('./BACKUP/', '', $v)).'</label></p>';
+								}
+							}
+						?>
+						<volist name="backlist" id="bvo" >
+						<p>
+							<input type="radio" value="{$bvo}" name="torestore" id="torestore{$i}"/>
+							<label for="torestore{$i}">{$bvo|str_replace='./BACKUP/', '',###|str_replace='_',':',###}</label>
+						</p>
+						</volist>
+						</table>
+						<br>
+						<p><input type="submit" name="restore" class="submit" value="开始还原" /></p>
+					</FORM>
+				</div>
+			</TD>
+		</TR>
+		</TABLE>
+<include file="Public:listjs" />
+<include file="Public:footer" />
